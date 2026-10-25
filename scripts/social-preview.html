@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  /* Social preview design source — rendered to docs/assets/social-preview.png (1280x640)
+     with tooling/shot.mjs. Code MIT; content CC BY 4.0. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 640px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #1c2a3a;
+    color: #f6f5f1;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .left { padding: 0 64px; width: 62%; }
+  .kicker {
+    color: #9db4c8; font-size: 22px; letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 18px; font-weight: 600;
+  }
+  h1 { font-size: 64px; line-height: 1.08; margin-bottom: 26px; }
+  h1 .no { color: #f0a35e; }
+  .sub { font-size: 25px; line-height: 1.45; color: #d5dee8; max-width: 620px; }
+  .facts { margin-top: 34px; display: flex; gap: 40px; }
+  .fact b { display: block; font-size: 34px; color: #fff; }
+  .fact span { font-size: 17px; color: #9db4c8; }
+  .card {
+    position: absolute; right: 34px; top: 66px;
+    width: 470px; background: #fffdfa; color: #1c2a3a;
+    border-radius: 14px; padding: 30px 34px 34px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    transform: rotate(1.5deg);
+    font-size: 19px; line-height: 1.55;
+  }
+  .card .h { font-weight: 700; font-size: 22px; margin-bottom: 10px; }
+  .card .choice { margin: 12px 0; padding-left: 16px; border-left: 4px solid #d8d4ca; color: #4a5560; }
+  .card .choice.strong { border-left-color: #11497e; color: #1c2a3a; font-weight: 600; }
+  .card .ask { margin-top: 16px; font-style: italic; color: #333e4c; }
+  .badge {
+    position: absolute; left: 64px; bottom: 44px;
+    font-size: 17px; color: #9db4c8;
+  }
+  .badge b { color: #d5dee8; }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="kicker">Performance consulting · case study</div>
+    <h1>Should this<br>be <span class="no">a course?</span></h1>
+    <p class="sub">The analysis behind a request for "feedback training" — and the blend of non-training fixes, a job aid and a branching scenario that the evidence supports instead.</p>
+    <div class="facts">
+      <div class="fact"><b>4 causes</b><span>only 1 needs training</span></div>
+      <div class="fact"><b>22% → 15%</b><span>90-day turnover goal</span></div>
+      <div class="fact"><b>3 endings</b><span>branching scenario</span></div>
+    </div>
+    <div class="badge">Simulated case <b>(fictional Brightline Health Services)</b> · iwyusdaz.github.io/should-this-be-a-course</div>
+  </div>
+  <div class="card">
+    <div class="h">Decision 1 — Opening the conversation</div>
+    <div class="choice">"Everything fine?" — hope it surfaces</div>
+    <div class="choice">"Your handovers need to improve."</div>
+    <div class="choice strong">"Yesterday's evening handover: the allergy line was missing. What's your take?"</div>
+    <div class="ask">Priya: "Nine years I've done this job. Now I'm the problem?"</div>
+  </div>
+</body>
+</html>
