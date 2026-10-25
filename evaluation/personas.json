@@ -1,0 +1,29 @@
+{
+  "note": "Persona specifications for evaluation/run-simulations.mjs. SIMULATED PERSONAS for portfolio evaluation — AI plays these roles; they are not real people. 'Prior' sets what the persona has already seen before playing the scenario (none = just the story; job-aid = has read the Feedback in 5 minutes job aid).",
+  "personas": [
+    {
+      "id": "P1",
+      "name": "Nile — newly promoted, conflict-averse",
+      "profile": "Promoted 4 months ago from senior nurse; 13 direct reports; no management training; finds hard conversations frightening; wants to be liked by former peers.",
+      "prior_knowledge": ["none", "job-aid"]
+    },
+    {
+      "id": "P2",
+      "name": "Marta — experienced clinic manager, task-focused",
+      "profile": "11 years managing; runs quick daily round-ups and calls them feedback; skeptical of 'soft skills' talk; measured on throughput.",
+      "prior_knowledge": ["none", "job-aid"]
+    },
+    {
+      "id": "P3",
+      "name": "Devon — cautious new manager, rule-following",
+      "profile": "Promoted 6 months ago; reads every policy; worried about saying the wrong thing; tends to defer to policy and escalate upward.",
+      "prior_knowledge": ["none", "job-aid"]
+    },
+    {
+      "id": "P4",
+      "name": "Bao — pragmatic ops-minded manager",
+      "profile": "Operations background; values speed and measurable outcomes; sees one-on-ones as admin unless shown the payoff; open-minded but impatient.",
+      "prior_knowledge": ["none", "job-aid"]
+    }
+  ]
+}
