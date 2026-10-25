@@ -35,7 +35,7 @@ flowchart TD
     E --> K
 ```
 
-### Text summary of the diagram (for screen readers and plain reading)
+## Text summary of the diagram (for screen readers and plain reading)
 
 1. **Start:** managers do not give regular, structured feedback.
 2. **Do they know they're supposed to, and what good looks like?** Partly no: there is no defined expectation (the policy only "encourages" one-on-ones). Fast fix: define the cadence, publish a one-on-one standard and template. Owner: HR + COO.
