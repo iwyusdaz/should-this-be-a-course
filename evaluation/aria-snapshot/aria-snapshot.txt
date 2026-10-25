@@ -24,11 +24,11 @@ Captured: 2026-10-25 · Playwright 1.57.0 · Chromium 143
 - heading "Decision 1 — Opening the conversation" [level=2]
 - text: You walk over. Priya looks up, slightly guarded — she has seen you reading the handover sheets. What do you open with?
 - paragraph:
-  - link "“Hey Pri, how's it going? Everything fine?” — keep it light, see if she raises it herself"
+  - link "“Priya — got five minutes? Yesterday's evening handover was missing the allergy line. What's your take?”"
 - paragraph:
-  - link "“Priya, we've had complaints about your handovers. They need to improve — starting today. This is important.” — be direct, show it's serious"
+  - link "“Hey Pri, how's it going? Everything fine?”"
 - paragraph:
-  - 'link "“Priya — can I grab you for five minutes? I want to talk about yesterday''s evening handover: the allergy line was missing. What''s your take on what''s going on?”"'
+  - link "“Priya, we've had complaints about your handovers. They need to improve — starting today. This is important.”"
 - paragraph:
   - text: "Simulated training scenario — Brightline Health Services is fictional (constructed for portfolio purposes). Content: CC BY 4.0. Code: MIT."
   - link "About this case study":

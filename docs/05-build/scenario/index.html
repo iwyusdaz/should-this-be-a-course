@@ -305,9 +305,9 @@ You walk over. Priya looks up, slightly guarded — she has seen you reading the
 What do you open with?
 
 &lt;div class=&quot;choices&quot;&gt;
-&lt;p&gt;[[“Hey Pri, how&#39;s it going? Everything fine?” — keep it light, see if she raises it herself-&gt;D1-Avoid]]&lt;/p&gt;
-&lt;p&gt;[[“Priya, we&#39;ve had complaints about your handovers. They need to improve — starting today. This is important.” — be direct, show it&#39;s serious-&gt;D1-Push]]&lt;/p&gt;
-&lt;p&gt;[[“Priya — can I grab you for five minutes? I want to talk about yesterday&#39;s evening handover: the allergy line was missing. What&#39;s your take on what&#39;s going on?”-&gt;D1-Strong]]&lt;/p&gt;
+&lt;p&gt;[[“Priya — got five minutes? Yesterday&#39;s evening handover was missing the allergy line. What&#39;s your take?”-&gt;D1-Strong]]&lt;/p&gt;
+&lt;p&gt;[[“Hey Pri, how&#39;s it going? Everything fine?”-&gt;D1-Avoid]]&lt;/p&gt;
+&lt;p&gt;[[“Priya, we&#39;ve had complaints about your handovers. They need to improve — starting today. This is important.”-&gt;D1-Push]]&lt;/p&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="D1-Avoid" tags="" position="600,100" size="100,100">&lt;&lt;set $d1 to &quot;avoid&quot;&gt;&gt;
 &lt;&lt;set $score to $score - 1&gt;&gt;
 !! Small talk
@@ -334,9 +334,9 @@ She nods slowly, once. &quot;Understood.&quot; She turns back to the board. The 
 &lt;&lt;set $score to $score + 1&gt;&gt;
 !! One specific moment
 
-&quot;Priya — can I grab you for five minutes? I want to talk about yesterday&#39;s evening handover: the allergy line was missing.&quot;
+&quot;Priya — got five minutes? Yesterday&#39;s evening handover was missing the allergy line. &#39;&#39;What&#39;s your take?&#39;&#39;&quot;
 
-You tell her exactly what you saw — Thursday&#39;s sheet, the missing allergy line, the callback from the other unit — and then you stop talking and ask: &#39;&#39;&quot;What&#39;s your take on what&#39;s going on?&quot;&#39;&#39;
+You tell her exactly what you saw — Thursday&#39;s sheet, the missing allergy line, the callback from the other unit — and then you stop talking.
 
 Priya is quiet for a moment. &quot;It&#39;s been a mess, honestly. Since the new admissions system, the evening sheets don&#39;t populate right, and I&#39;ve been finishing them from memory. I&#39;m scared I&#39;ll miss something. I did mention it in the huddle two weeks ago, but it dropped.&quot;
 
@@ -363,9 +363,9 @@ You raise the handovers again — and this time Priya pushes back hard.
 Your stomach drops. The room is very quiet.
 
 &lt;div class=&quot;choices&quot;&gt;
-&lt;p&gt;[[“You&#39;re right — I&#39;m sorry, I shouldn&#39;t have raised it. Forget it.” — drop it, she&#39;s earned the benefit of the doubt-&gt;D2-Back]]&lt;/p&gt;
-&lt;p&gt;[[“It&#39;s not personal, Priya — handover completeness is mandatory, it&#39;s in the policy. I need you to comply.” — hold the line on the rule-&gt;D2-Push]]&lt;/p&gt;
+&lt;p&gt;[[“You&#39;re right — I&#39;m sorry, I shouldn&#39;t have raised it. Forget it.”-&gt;D2-Back]]&lt;/p&gt;
 &lt;p&gt;[[“You&#39;re right that the system change made things harder — that&#39;s on me to fix. And the handovers still have to be complete: that&#39;s a patient-safety line. What would make them easier to get right?”-&gt;D2-Strong]]&lt;/p&gt;
+&lt;p&gt;[[“I hear you. But handover completeness is a hard requirement — it&#39;s patient safety. I need those sheets complete.”-&gt;D2-Push]]&lt;/p&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="D2-Back" tags="" position="1225,100" size="100,100">&lt;&lt;set $d2 to &quot;back&quot;&gt;&gt;
 &lt;&lt;set $score to $score - 1&gt;&gt;
 !! Stepping back
@@ -380,11 +380,11 @@ You spend the rest of the fifteen minutes on rota questions. You have demonstrat
 &lt;&lt;set $score to $score + 0&gt;&gt;
 !! Holding the line
 
-&quot;It&#39;s not personal, Priya — handover completeness is mandatory, it&#39;s in the policy. I need you to comply.&quot;
+&quot;I hear you. But handover completeness is a hard requirement — it&#39;s patient safety. I need those sheets complete.&quot;
 
-&quot;It&#39;s in the policy,&quot; she repeats. &quot;Right.&quot;
+&quot;Patient safety,&quot; she repeats. &quot;Right.&quot;
 
-She picks up her pen. The last eight minutes of your one-on-one are the quietest you have ever spent with a colleague. Nothing is agreed, nothing is offered, and the policy — which neither of you wrote, and which did not add the evening paperwork — is the only thing left standing in the room.
+She picks up her pen. The last eight minutes of your one-on-one are the quietest you have ever spent with a colleague. Nothing is agreed, nothing is offered, and the hard requirement — which neither of you wrote, and which did not add the evening paperwork — is the only thing left standing in the room.
 
 [[Later that week-&gt;C2]]</tw-passagedata><tw-passagedata pid="12" name="D2-Strong" tags="" position="225,225" size="100,100">&lt;&lt;set $d2 to &quot;strong&quot;&gt;&gt;
 &lt;&lt;set $score to $score + 1&gt;&gt;

@@ -167,7 +167,7 @@ const PATHS = [
   {
     name: "strong path reaches End_Improved",
     steps: [
-      "Head over and talk to Priya", "can I grab you for five minutes", "A few days later",
+      "Head over and talk to Priya", "got five minutes", "A few days later",
       "Two weeks later", "system change", "Later that week",
       "The next one-on-one", "Give one specific piece of feedback", "Four weeks later", "Continue",
     ],
@@ -177,7 +177,7 @@ const PATHS = [
     name: "mistake-heavy path reaches End_Unresolved",
     steps: [
       "Head over and talk to Priya", "complaints about your handovers", "A few days later",
-      "Two weeks later", "handover completeness is mandatory", "Later that week",
+      "Two weeks later", "hard requirement", "Later that week",
       "The next one-on-one", "brilliant she was", "Four weeks later", "Continue",
     ],
     expect: "End_Unresolved",
@@ -215,7 +215,7 @@ for (const pathSpec of PATHS) {
   const widen = [];
   for (const [label, steps] of [
     ["Start", []],
-    ["Decision 2 (D2)", ["Head over and talk to Priya", "can I grab you for five minutes", "A few days later", "Two weeks later"]],
+    ["Decision 2 (D2)", ["Head over and talk to Priya", "got five minutes", "A few days later", "Two weeks later"]],
     ["Debrief", ["Head over and talk to Priya", "Hey Pri, how", "A few days later", "Two weeks later", "have raised it", "Later that week", "The next one-on-one", "Cancel", "Four weeks later", "Continue", "Debrief"]],
   ]) {
     await narrow.goto(SCENARIO);

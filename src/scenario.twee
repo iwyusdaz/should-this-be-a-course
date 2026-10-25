@@ -226,9 +226,9 @@ You walk over. Priya looks up, slightly guarded — she has seen you reading the
 What do you open with?
 
 <div class="choices">
-<p>[[“Hey Pri, how's it going? Everything fine?” — keep it light, see if she raises it herself->D1-Avoid]]</p>
-<p>[[“Priya, we've had complaints about your handovers. They need to improve — starting today. This is important.” — be direct, show it's serious->D1-Push]]</p>
-<p>[[“Priya — can I grab you for five minutes? I want to talk about yesterday's evening handover: the allergy line was missing. What's your take on what's going on?”->D1-Strong]]</p>
+<p>[[“Priya — got five minutes? Yesterday's evening handover was missing the allergy line. What's your take?”->D1-Strong]]</p>
+<p>[[“Hey Pri, how's it going? Everything fine?”->D1-Avoid]]</p>
+<p>[[“Priya, we've had complaints about your handovers. They need to improve — starting today. This is important.”->D1-Push]]</p>
 </div>
 
 :: D1-Avoid
@@ -264,9 +264,9 @@ She nods slowly, once. "Understood." She turns back to the board. The conversati
 <<set $score to $score + 1>>
 !! One specific moment
 
-"Priya — can I grab you for five minutes? I want to talk about yesterday's evening handover: the allergy line was missing."
+"Priya — got five minutes? Yesterday's evening handover was missing the allergy line. ''What's your take?''"
 
-You tell her exactly what you saw — Thursday's sheet, the missing allergy line, the callback from the other unit — and then you stop talking and ask: ''"What's your take on what's going on?"''
+You tell her exactly what you saw — Thursday's sheet, the missing allergy line, the callback from the other unit — and then you stop talking.
 
 Priya is quiet for a moment. "It's been a mess, honestly. Since the new admissions system, the evening sheets don't populate right, and I've been finishing them from memory. I'm scared I'll miss something. I did mention it in the huddle two weeks ago, but it dropped."
 
@@ -299,9 +299,9 @@ You raise the handovers again — and this time Priya pushes back hard.
 Your stomach drops. The room is very quiet.
 
 <div class="choices">
-<p>[[“You're right — I'm sorry, I shouldn't have raised it. Forget it.” — drop it, she's earned the benefit of the doubt->D2-Back]]</p>
-<p>[[“It's not personal, Priya — handover completeness is mandatory, it's in the policy. I need you to comply.” — hold the line on the rule->D2-Push]]</p>
+<p>[[“You're right — I'm sorry, I shouldn't have raised it. Forget it.”->D2-Back]]</p>
 <p>[[“You're right that the system change made things harder — that's on me to fix. And the handovers still have to be complete: that's a patient-safety line. What would make them easier to get right?”->D2-Strong]]</p>
+<p>[[“I hear you. But handover completeness is a hard requirement — it's patient safety. I need those sheets complete.”->D2-Push]]</p>
 </div>
 
 :: D2-Back
@@ -322,11 +322,11 @@ You spend the rest of the fifteen minutes on rota questions. You have demonstrat
 <<set $score to $score + 0>>
 !! Holding the line
 
-"It's not personal, Priya — handover completeness is mandatory, it's in the policy. I need you to comply."
+"I hear you. But handover completeness is a hard requirement — it's patient safety. I need those sheets complete."
 
-"It's in the policy," she repeats. "Right."
+"Patient safety," she repeats. "Right."
 
-She picks up her pen. The last eight minutes of your one-on-one are the quietest you have ever spent with a colleague. Nothing is agreed, nothing is offered, and the policy — which neither of you wrote, and which did not add the evening paperwork — is the only thing left standing in the room.
+She picks up her pen. The last eight minutes of your one-on-one are the quietest you have ever spent with a colleague. Nothing is agreed, nothing is offered, and the hard requirement — which neither of you wrote, and which did not add the evening paperwork — is the only thing left standing in the room.
 
 [[Later that week->C2]]
 

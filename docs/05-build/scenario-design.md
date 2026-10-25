@@ -6,7 +6,7 @@ nav_order: 1
 
 # Scenario design — "The Handover Problem"
 
-**Play it:** [docs/05-build/scenario/index.html](scenario/index.html) (opens in a new tab) · **Toolchain:** written as Twee 3 source ([`src/scenario.twee`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/src/scenario.twee)), compiled with Tweego 2.1.1, story format **SugarCube 2.37.3** (pinned). Rebuild with `npm run build:scenario`.
+**Play it:** [docs/05-build/scenario/index.html](scenario/index.html) · **Toolchain:** written as Twee 3 source ([`src/scenario.twee`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/src/scenario.twee)), compiled with Tweego 2.1.1, story format **SugarCube 2.37.3** (pinned). Rebuild with `npm run build:scenario`.
 
 ## The story
 
@@ -60,10 +60,21 @@ Every option is a behavior the [discovery interviews](../02-discovery/interview-
 | Decision | Strong move | Realistic mistake | Avoidant move | Source in the analysis |
 |---|---|---|---|---|
 | 1. Opening | Name one specific, recent behavior; ask for their view first | "Your handovers need to improve" — a general complaint with nothing to act on | Small talk and waiting for the problem to surface | M1's public, vague comment to Jordan; the M2 contradiction (feedback "constantly", scores 2.1) |
-| 2. Pushback | Acknowledge the real constraint, hold the safety line, ask what would help | "It's mandatory, comply" — the policy as a shield | Apologise and withdraw the concern | M2's policy reflex; HR1's point that the policy "never defined regular"; S1's "you hear about it second-hand" |
+| 2. Pushback | Acknowledge the real constraint, hold the safety line, ask what would help | "I need those sheets complete" — the requirement as a shield | Apologise and withdraw the concern | M2's policy reflex; HR1's point that the policy "never defined regular"; S1's "you hear about it second-hand" |
 | 3. Closing | One specific feedback + agreed next step + booked next 1:1 | The compliment sandwich | Cancel — "next month" | The template's closing prompts; S2's cancelled check-in; the calendar audit |
 
 The three "realistic mistakes" were written to be *attractive* — each is defensible in the moment ("being direct", "staying calm", "not making it weird", "she's exhausted"). No option announces itself as correct (final quality check: no obviously right option).
+
+### Option-order rebalancing (2026-10-26)
+
+The first published build failed its own quality check in a way the wording alone didn't show: in all three decisions the strong option sat **last**, was the **longest**, and was the **only option without an em-dash gloss** — a structural signature a player could exploit on Decision 1 and Decision 2 (Decision 3's mistakes competed well on their own). A fresh-context [agent design review](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md) flagged it, and the options were rebalanced:
+
+- **Position varies now:** the strong move is **first** in Decision 1, **middle** in Decision 2, and stays **last** in Decision 3 (where the two mistakes are genuinely tempting).
+- **The editorial glosses were stripped** from the Decision 1 and 2 choice labels — the dialog carries the intent, and no option gets a line the others lack. Decision 3 keeps its matter-of-fact glosses on all three options.
+- **The strong openers were trimmed** to the same shape as the mistakes (the skill — one specific moment, then "What's your take?" — survives the trim), and Decision 2's policy-first mistake was rewritten from a caricature ("I need you to comply") to something a real pressured manager would say ("I hear you. But handover completeness is a hard requirement — it's patient safety. I need those sheets complete.").
+- The debrief still names the strong/mistake/avoidant pattern explicitly — post-hoc teaching, after the choices have been made, not a cue during them.
+
+All three scripted playthroughs and step counts re-verified after the reorder (`npm run test:scenario`, 11/11).
 
 ## Consequence feedback, not "Correct!"
 
