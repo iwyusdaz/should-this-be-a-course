@@ -1,15 +1,37 @@
 {% comment %}
-Custom head additions for Just the Docs (loaded on every Pages page).
-Mermaid renders the ```mermaid blocks used in the analysis and design pages.
-Pinned version; text summaries are provided under every diagram in the
-Markdown source, so nothing here is required for screen-reader access.
+Custom head additions for Just the Docs (loaded on every Pages page via
+_includes/head_custom.html). Mermaid renders the ```mermaid blocks used in the
+analysis and design pages. Jekyll/rouge renders those fences as highlighted
+code blocks (pre > code.language-mermaid), so this loader converts them to
+mermaid containers before running mermaid.run(). Pinned version; a text
+summary is provided under every diagram in the Markdown source, so nothing
+here is required for screen-reader access — the diagrams are an enhancement.
 {% endcomment %}
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.esm.min.mjs";
   mermaid.initialize({
-    startOnLoad: true,
+    startOnLoad: false,
     theme: "neutral",
     securityLevel: "strict",
     flowchart: { htmlLabels: false }
+  });
+  window.addEventListener("DOMContentLoaded", async () => {
+    // Jekyll renders ```mermaid fences as highlighted code — convert to mermaid targets.
+    for (const code of document.querySelectorAll("code.language-mermaid")) {
+      const container = document.createElement("div");
+      container.className = "mermaid";
+      container.textContent = code.textContent;
+      const wrapper = code.closest("pre") ?? code;
+      wrapper.replaceWith(container);
+    }
+    const targets = document.querySelectorAll(".mermaid");
+    if (targets.length) {
+      try {
+        await mermaid.run({ nodes: targets });
+      } catch (e) {
+        console.error("Mermaid render failed:", e);
+        // The code-block text remains as fallback content if rendering fails.
+      }
+    }
   });
 </script>
