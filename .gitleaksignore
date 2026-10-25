@@ -1,0 +1,3 @@
+# False positive: SugarCube engine variable name (errSavesSlotsDeprecated=) in the
+# minified bundled library inside the compiled scenario — not a credential.
+2846eeb007835d03c59b2d10bd18f6de9abb55af:docs/05-build/scenario/index.html:generic-api-key:512
