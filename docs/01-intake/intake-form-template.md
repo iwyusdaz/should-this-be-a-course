@@ -6,6 +6,8 @@ nav_order: 1
 
 # Training request intake form (blank template)
 
+> **Simulated case.** This template is generic; the completed example it belongs to (Brightline Health Services) is fictional — constructed for portfolio purposes.
+
 A reusable intake form for any "can you build us some training?" request. The purpose is not to capture the training request — it is to capture the *business problem behind the request*, in the requester's own words, before any solution is discussed.
 
 > **How to use it:** send it before the first meeting if you can, but walk through it live if the requester prefers. The most valuable fields are 2, 5, and 9 — most requests cannot answer them, and that gap *is* the first finding.

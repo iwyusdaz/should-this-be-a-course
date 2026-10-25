@@ -6,13 +6,15 @@ nav_order: 1
 
 # Action map (Cathy Moore method)
 
+> **Simulated case.** Brightline Health Services and all names and figures are fictional — constructed for portfolio purposes.
+
 Action mapping starts from the **business goal**, asks what people must **do** for the goal to happen, then — for each action — asks *why they aren't doing it already* before allowing any training into the design. Every practice activity must serve an action; no activity exists to "cover content".
 
 ## The map
 
 ```mermaid
 flowchart LR
-    GOAL["BUSINESS GOAL<br/>Reduce 90-day new-hire turnover<br/>from 22% to 15% in 12 months<br/>(~6 fewer exits/year)"]
+    GOAL["BUSINESS GOAL<br/>Reduce 90-day new-hire turnover<br/>from 22% to 15% in 12 months<br/>(~5–6 fewer exits/year)"]
 
     GOAL --> A1[" Managers hold a 15-min one-on-one<br/>with every direct report every 2 weeks"]
     GOAL --> A2[" Managers give one specific piece of<br/>structured feedback per one-on-one"]

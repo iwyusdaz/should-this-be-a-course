@@ -17,7 +17,7 @@ Everything here ties back to one business goal: **reduce 90-day new-hire turnove
 | Leading | % of managers holding one-on-ones at least every two weeks | Calendar audit (sampled) + manager self-report | **31%** (22 of 70) | **80%** | Monthly |
 | Leading | Scenario completion + debrief reflection submitted | Scenario log + one-question reflection | n/a (new) | **90% of managers** | 6 weeks post-launch |
 | Leading | Job aid usage (one-on-ones where the structure was used, manager self-report) | 30-day challenge tracker | n/a (new) | 60% | 30 days, then quarterly |
-| Behavior | Staff pulse item: *"I received useful feedback in the last 2 weeks"* (1–5) | Quarterly pulse survey | **2.4/5** (n=130) | **3.5/5** | Quarterly |
+| Behavior | Staff pulse item: *"I received useful feedback in the last 2 weeks"* (1–5) | Quarterly pulse survey | **2.4/5** (n=130) | **3.5/5** | Quarterly; reach 3.5 within 2 quarters |
 | Behavior | Staff reporting a regular fortnightly 1:1 | Pulse survey | 35% (45 of 130) | 60% | Quarterly |
 | Lagging | 90-day new-hire turnover | HRIS | **22%** (17 of 78) | **15%** | 12 months (reported quarterly) |
 | Guardrail | Clinic throughput (patients/day) and wait-time variance | Ops dashboards | current levels | no deterioration | Monthly |

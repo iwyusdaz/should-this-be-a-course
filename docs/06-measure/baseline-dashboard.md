@@ -43,7 +43,7 @@ Managers also self-report that only about **1 in 5 of their one-on-ones (~20%)**
 | Q3 2026 | 18 | 4 | 22.2% |
 | **Trailing 12 months** | **78** | **17** | **21.8% → 22%** |
 
-Exit-interview coding for the 17 exits: "no feedback / didn't feel supported" appears as a stated factor in **9 of 17** (HR, simulated coding). At an estimated $9,400 per new-hire exit, the trailing-year cost is ≈ **$160k**; reaching 15% avoids ≈ **$56k/year**.
+Exit-interview coding for the 17 exits: "no feedback / didn't feel supported" appears as a stated factor in **9 of 17** (HR, simulated coding). At an estimated $9,400 per new-hire exit, the trailing-year cost is ≈ **$160k**; reaching 15% avoids ≈ **$47–56k/year** (7 points × 78 new hires ≈ 5–6 exits).
 
 ## What happens to this page
 

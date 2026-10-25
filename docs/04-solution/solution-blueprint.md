@@ -6,6 +6,8 @@ nav_order: 3
 
 # Solution blueprint
 
+> **Simulated case.** Brightline Health Services and all names and figures are fictional — constructed for portfolio purposes.
+
 Every component of the blend, with its owner, timeline and dependencies. Weeks are counted from proposal approval (week 0 = approval; the requested deadline was "live next quarter", ~11 weeks).
 
 | # | Component | Owner | Builds | Launches | Depends on | Done when |

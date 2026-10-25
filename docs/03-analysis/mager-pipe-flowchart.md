@@ -6,6 +6,8 @@ nav_order: 3
 
 # The Mager & Pipe decision flow applied to Brightline
 
+> **Simulated case.** Brightline Health Services and all names and figures are fictional — constructed for portfolio purposes.
+
 Mager & Pipe's *Analyzing Performance Problems* gives a sequence of questions for any performance gap: fix the environment first, test whether it's really a skill deficit ("could they do it if their life depended on it?"), and only then train — choosing between "can't do" remediations. The flowchart below runs Brightline's four causes through that procedure.
 
 ```mermaid

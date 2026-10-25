@@ -27,7 +27,7 @@ We spent two weeks on discovery: six interviews, a 200-person pulse survey acros
 3. **Managers are measured on throughput only.** Team development carries 0% weight on every clinic manager's scorecard. Feedback work is invisible.
 4. **The genuine skill gap is narrow:** some managers — concentrated in the 35% promoted since the expansion — avoid difficult conversations and don't structure feedback well.
 
-**Why this matters commercially:** 90-day new-hire turnover is **22%**; exit interviews repeatedly cite "no idea how I was doing." At ~$9,400 per new-hire exit, that is roughly **$160k/year** in avoidable turnover cost. Getting to 15% recovers about $56k/year — and none of it moves if the system stays as it is.
+**Why this matters commercially:** 90-day new-hire turnover is **22%**; exit interviews repeatedly cite "no idea how I was doing." At ~$9,400 per new-hire exit, that is roughly **$160k/year** in avoidable turnover cost. Getting to 15% recovers ≈**$47–56k/year** (7 points × 78 new hires ≈ 5–6 fewer exits) — and none of it moves if the system stays as it is.
 
 **The tell:** usefulness scores barely differ between new and veteran managers (2.3 vs 2.6 out of 5). Experience is not the variable. Structure is: staff with a fortnightly one-on-one score **3.4/5** on useful feedback; staff without one score **1.9**.
 
@@ -49,11 +49,14 @@ We spent two weeks on discovery: six interviews, a 200-person pulse survey acros
 
 | Compare | Requested 2-hour course | Recommended blend |
 |---|---|---|
-| Manager time | 140 hrs sitting + scheduling drag ≈ 210 hrs (clinical backfill) | ~90 min each ≈ 105 hrs, spread over 30 days |
+| Training-specific time | 140 hrs sitting + scheduling drag ≈ 210 hrs (clinical backfill) | ~90 min each ≈ 105 hrs, spread over 30 days |
+| Recurring 1:1 time (the intervention itself) | Not built in — the course ends and the calendar reverts | **~2 h/manager/week** at the median span of 13 (13 reports × fortnightly 20-min 1:1s ≈ 2.2 h/week — the [document review's](../02-discovery/document-review.html) own arithmetic). This row is not overhead on top of the intervention: it **is** the intervention. That time is already being spent today — unstructured — on firefighting, callbacks and redoing incomplete work; the cadence makes it deliberate, and it is the spend that displaces the rework and exit costs below. |
 | Build cost | ~$18k (external SCORM build quoted) | ~$6k internal-equivalent (scenario + job aid + template) |
 | Reaches which causes | Skill only (cause 4) | All four causes |
 | Builds a lasting structure | No | Yes: cadence, template, form, scorecard stay after launch |
 | Can be measured against turnover | Weakly | Yes (see below) |
+
+Read the two time rows together: the 2-hour course bills ~210 one-off hours; the blend bills ~105 one-off hours **plus** the recurring 1:1 hours managers are already losing every week to the problems the blend fixes. The honest comparison is not "course hours vs blend hours" — it is what each option turns the time into: a sitting, or a working cadence.
 
 ## How we'll measure success
 

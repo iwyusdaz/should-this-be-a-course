@@ -6,6 +6,8 @@ nav_order: 4
 
 # What we won't build (and why)
 
+> **Simulated case.** Brightline Health Services and all names and figures are fictional — constructed for portfolio purposes.
+
 The requested 2-hour course is the headline, but it's not the only thing we're saying no to. Each of these was considered; each fails the evidence test from [discovery](../02-discovery/survey-analysis.html). Saying no to these is what protects the budget and manager time for the things that will move turnover.
 
 ## 1. The 2-hour e-learning course on giving feedback

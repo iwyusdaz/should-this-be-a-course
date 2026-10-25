@@ -16,7 +16,7 @@ A performance gap is a measurable difference between what is happening and what 
 |---|---|---|---|
 | **90-day new-hire turnover** | **22%** (17 of 78 new hires, trailing 12 months, HRIS) | **15%** | Within 12 months |
 
-Why this metric: it is the number the intake conversation surfaced (see [reframing question 2](../01-intake/intake-form-completed.html)), it is already measured, and exit-interview coding links it to feedback ("no idea how I was doing" — see [interview notes](../02-discovery/interview-notes-simulated.html), M3/S1/S2). At an estimated $9,400 per departed new hire, moving 22% to 15% avoids roughly 6 exits per year (~$56k/year) — before engagement effects.
+Why this metric: it is the number the intake conversation surfaced (see [reframing question 2](../01-intake/intake-form-completed.html)), it is already measured, and exit-interview coding links it to feedback ("no idea how I was doing" — see [interview notes](../02-discovery/interview-notes-simulated.html), M3/S1/S2). At an estimated $9,400 per departed new hire, moving 22% to 15% avoids ≈5–6 exits per year (7 points × 78 new hires ≈ 5.5 exits, ≈$47–56k/year) — before engagement effects.
 
 ### Level 2: The behavior that drives it
 
