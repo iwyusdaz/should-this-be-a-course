@@ -1,0 +1,25 @@
+# Jekyll configuration for the case study site (GitHub Pages, built from /docs)
+title: Should This Be a Course?
+description: A performance consulting case study — the analysis behind a request for "feedback training", and the blended solution that replaced a 2-hour course.
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+url: https://iwyusdaz.github.io
+baseurl: /should-this-be-a-course
+
+# Just the Docs
+search_enabled: true
+search:
+  rel_url: true
+heading_anchors: true
+footer_content: 'Content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Code licensed <a href="https://opensource.org/license/mit">MIT</a> · A portfolio case study with simulated data — see the <a href="attribution.html">attribution page</a>.'
+
+# Colors follow the theme default (accessible); no overrides that would break contrast.
+
+plugins:
+  - jekyll-remote-theme
+
+# Keep large data files out of the Jekyll processor; they are static assets.
+keep_files:
+  - 02-discovery/survey-data-simulated.csv
+
+exclude:
+  - 05-build/scenario/README-internal.md

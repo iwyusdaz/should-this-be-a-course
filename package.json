@@ -1,0 +1,24 @@
+{
+  "name": "should-this-be-a-course",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A performance consulting case study: analysis finds the real causes behind a request for 'feedback training'; the solution is a blend of non-training fixes, a job aid and a branching scenario.",
+  "scripts": {
+    "data:generate": "node scripts/generate-survey.mjs",
+    "build:scenario": "node scripts/build-scenario.mjs",
+    "build:pdf": "node scripts/make-job-aid-pdf.mjs",
+    "build:charts": "node scripts/make-charts.mjs",
+    "test:scenario": "node tests/scenario-tests.mjs",
+    "eval:pending": "node evaluation/run-simulations.mjs && node evaluation/run-review-panel.mjs",
+    "eval:dry-run": "node evaluation/run-simulations.mjs --dry-run && node evaluation/run-review-panel.mjs --dry-run"
+  },
+  "devDependencies": {
+    "playwright": "1.57.0",
+    "axe-core": "4.11.1",
+    "dotenv": "17.3.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "note": "In this build workspace, devDependencies are installed once at the workspace root (/github-portfolio-building/node_modules) and resolved by Node walking up from this repo. Run `npm install` here if you clone the repo standalone."
+}
