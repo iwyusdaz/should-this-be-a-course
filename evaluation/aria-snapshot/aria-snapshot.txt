@@ -1,0 +1,95 @@
+ARIA SNAPSHOTS — The Handover Problem scenario (Playwright ariaSnapshot fallback).
+Note: Guidepup/VoiceOver automation is NOT functional on this build machine's macOS version;
+no VoiceOver testing has been performed. These captures show the browser accessibility tree
+that a screen reader would consume — they are NOT a substitute for a manual VoiceOver check
+(protocol: evaluation/human-protocol/manual-voiceover-check.md).
+Captured: 2026-10-25 · Playwright 1.57.0 · Chromium 143
+=== START ===
+- heading "Monday, 07:42" [level=2]
+- text: You are
+- strong: Sam
+- text: ", a manager at Brightline Health Services. Three months ago you were a senior nurse; today you have"
+- strong: 14 direct reports
+- text: ", a rota to build, and — you have just realized — no one-on-one meetings scheduled with anyone. There was no management training; there was a folder of HR policies you meant to read. Priya is one of your best nurses. Nine years on the unit, patients ask for her by name. But for the past few weeks her"
+- strong: handovers have been incomplete
+- text: — missing allergies, a missed consent check — and yesterday your colleague Marcus complained about it for the second time. Twice this week another unit had to call back for information Priya's handover should have contained. You have seen it yourself twice. You have said nothing so far. Priya is at the nurses' station now, checking the board before handover. Marcus is hovering nearby, arms crossed.
+- paragraph:
+  - link "Head over and talk to Priya"
+- paragraph:
+  - text: "Simulated training scenario — Brightline Health Services is fictional (constructed for portfolio purposes). Content: CC BY 4.0. Code: MIT."
+  - link "About this case study":
+    - /url: ../../index.html
+
+=== DECISION 1 ===
+- heading "Decision 1 — Opening the conversation" [level=2]
+- text: You walk over. Priya looks up, slightly guarded — she has seen you reading the handover sheets. What do you open with?
+- paragraph:
+  - link "“Hey Pri, how's it going? Everything fine?” — keep it light, see if she raises it herself"
+- paragraph:
+  - link "“Priya, we've had complaints about your handovers. They need to improve — starting today. This is important.” — be direct, show it's serious"
+- paragraph:
+  - 'link "“Priya — can I grab you for five minutes? I want to talk about yesterday''s evening handover: the allergy line was missing. What''s your take on what''s going on?”"'
+- paragraph:
+  - text: "Simulated training scenario — Brightline Health Services is fictional (constructed for portfolio purposes). Content: CC BY 4.0. Code: MIT."
+  - link "About this case study":
+    - /url: ../../index.html
+
+=== DEBRIEF ===
+- heading "Debrief — what this scenario was practicing" [level=2]
+- strong: "Your path through this playthrough:"
+- text: You
+- strong: opened with small talk and waited
+- text: for the problem to raise itself; it didn't, and the week was lost anyway. When Priya pushed back, you
+- strong: apologised and withdrew the concern
+- text: — teaching everyone watching that pushback ends conversations. At the follow-up, you
+- strong: cancelled
+- text: — and the calendar learned that one-on-ones are optional.
+- paragraph:
+  - strong: The model under the strong path
+  - text: — and the one on the
+  - link "\"Feedback in 5 minutes\" job aid":
+    - /url: ../job-aid/index.html
+  - text: ":"
+  - emphasis: situation → behavior → impact → request → listen
+  - text: ", then book the next one. Notice the scenario also gave Sam things"
+  - strong: no amount of skill could fix alone
+  - text: ": broken evening sheets, late-shift timing, an unset one-on-one standard. On this unit, the"
+  - emphasis: system
+  - text: fixes (a cadence, a template, rostered time, a form that asks a real question) had to exist before the conversation could happen. That is the finding the
+  - link "case study analysis":
+    - /url: ../../03-analysis/is-it-training.html
+  - text: "builds to: most of this problem was never a training problem."
+- strong: "What each decision was really testing:"
+- heading "Decision 1 — Opening the conversation" [level=3]
+- strong: "Strong:"
+- text: name one specific, recent behavior and ask for their view.
+- strong: "Realistic mistake:"
+- text: a general complaint ("improve your handovers") that gives nothing to act on.
+- strong: "Avoidant:"
+- text: small talk; hope the problem surfaces on its own.
+- heading "Decision 2 — The pushback" [level=3]
+- strong: "Strong:"
+- text: acknowledge the real constraint, hold the safety line, ask what would help.
+- strong: "Realistic mistake:"
+- text: hide behind the policy.
+- strong: "Avoidant:"
+- text: apologise and withdraw the concern.
+- heading "Decision 3 — Closing the loop" [level=3]
+- strong: "Strong:"
+- text: one specific piece of feedback, one agreed next step, the next one-on-one booked.
+- strong: "Realistic mistake:"
+- text: the compliment sandwich.
+- strong: "Avoidant:"
+- text: cancel — "next month". Where did each option come from? Every one of them is a behavior the
+- link "discovery interviews":
+  - /url: ../../02-discovery/interview-notes-simulated.html
+- text: heard from a real (fictional) Brightline manager.
+- paragraph:
+  - link "Play again"
+- paragraph:
+  - link "Back to the case study":
+    - /url: ../../index.html
+- paragraph:
+  - text: "Simulated training scenario — Brightline Health Services is fictional (constructed for portfolio purposes). Content: CC BY 4.0. Code: MIT."
+  - link "About this case study":
+    - /url: ../../index.html

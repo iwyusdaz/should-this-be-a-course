@@ -1,0 +1,65 @@
+{
+  "generated": "2026-10-25T17:42:50.055Z",
+  "scenario": "docs/05-build/scenario/index.html",
+  "tool": "Playwright 1.57.0 (Chromium headless)",
+  "note": "Scripted tests replace the automatable parts of the usability check. They prove the flows, keyboard support, focus management and reflow; they are not real user testing.",
+  "passed": 11,
+  "total": 11,
+  "results": [
+    {
+      "name": "focus moves to passage heading on first load",
+      "passed": true,
+      "details": "activeElement=H2 tabindex=-1 text=\"Monday, 07:42\""
+    },
+    {
+      "name": "focus moves to new passage heading after a choice",
+      "passed": true,
+      "details": "activeElement=H2 tabindex=-1 text=\"Decision 1 — Opening the conversation\""
+    },
+    {
+      "name": "keyboard-only playthrough (Tab/Enter only) reaches the debrief",
+      "passed": true,
+      "details": "11 keyboard activations; visited: Start, D1, D1-Avoid, C1, D2, D2-Back, C2, D3, D3-Cancel, C3, End_Escalated, Debrief"
+    },
+    {
+      "name": "no keyboard trap detected during playthrough",
+      "passed": true,
+      "details": "Tab moved focus freely across every passage; Enter activated each choice; the loop never stalled"
+    },
+    {
+      "name": "strong path reaches End_Improved",
+      "passed": true,
+      "details": "11 passages visited (Start→D1→D1-Strong→C1→D2→D2-Strong→C2→D3→D3-Strong→C3→End_Improved); decisions=3, options per decision=3"
+    },
+    {
+      "name": "mistake-heavy path reaches End_Unresolved",
+      "passed": true,
+      "details": "11 passages visited (Start→D1→D1-Push→C1→D2→D2-Push→C2→D3→D3-Sandwich→C3→End_Unresolved); decisions=3, options per decision=3"
+    },
+    {
+      "name": "avoidant path reaches End_Escalated",
+      "passed": true,
+      "details": "11 passages visited (Start→D1→D1-Avoid→C1→D2→D2-Back→C2→D3→D3-Cancel→C3→End_Escalated); decisions=3, options per decision=3"
+    },
+    {
+      "name": "320px viewport / 400%-zoom equivalent (WCAG 1.4.10): no horizontal scrolling",
+      "passed": true,
+      "details": "fresh 320px loads of Start, Decision 2 and Debrief: scrollWidth <= 320 at all"
+    },
+    {
+      "name": "no timed choices (passage unchanged after idle wait)",
+      "passed": true,
+      "details": "no automatic navigation observed during 1.6s idle on a decision passage"
+    },
+    {
+      "name": "ariaSnapshot captures saved",
+      "passed": true,
+      "details": "evaluation/aria-snapshot/aria-snapshot.txt (Start + Decision 1 + Debrief)"
+    },
+    {
+      "name": "no page errors during the whole run",
+      "passed": true,
+      "details": "zero uncaught errors in Chromium"
+    }
+  ]
+}

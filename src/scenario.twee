@@ -1,0 +1,484 @@
+:: StoryTitle
+The Handover Problem — a branching scenario
+
+:: StoryData
+{
+  "ifid": "1FA829CE-6491-4C29-ACC7-F54D08C18A5B",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Start"
+}
+
+:: StoryStylesheet [stylesheet]
+/* Scenario styles — plain, high-contrast, keyboard-friendly.
+   Content CC BY 4.0; this code MIT (see repository LICENSE-CODE). */
+
+html {
+  font-size: 100%; /* 16px base; all sizes in rem scale */
+}
+
+body {
+  background-color: #f6f5f1;
+  color: #1c2a3a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
+  margin: 0;
+}
+
+#passages {
+  max-width: 44em;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem;
+}
+
+.passage {
+  background-color: #fffdfa;
+  border: 1px solid #d8d4ca;
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+/* Passage titles are h2 (the SugarCube sidebar carries the single h1). */
+.passage h2 {
+  font-size: 1.45rem;
+  margin: 0 0 0.9em;
+}
+
+.passage h3 {
+  font-size: 1.2rem;
+  margin: 1.4em 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* Choices: real links, never color-only, generous hit area */
+.choices {
+  border-top: 2px solid #d8d4ca;
+  margin-top: 1.4em;
+  padding-top: 1em;
+}
+
+.choices p {
+  margin: 0 0 0.9em;
+}
+
+a {
+  color: #11497e; /* 8.6:1 on #fffdfa */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: #0c3257;
+}
+
+/* Visible focus everywhere, including the programmatic heading focus */
+a:focus,
+[tabindex="-1"]:focus {
+  outline: 3px solid #a34e00; /* 4.6:1 against #fffdfa */
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.link-internal {
+  font-weight: 600;
+}
+
+.debrief-note {
+  background-color: #eef2f6;
+  border-left: 4px solid #11497e;
+  padding: 0.75em 1em;
+}
+
+.story-foot {
+  border-top: 1px solid #d8d4ca;
+  color: #4a5560;
+  font-size: 0.8125rem;
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.story-foot p {
+  margin: 0;
+}
+
+/* The SugarCube sidebar stays reachable; it collapses automatically on narrow screens.
+   Its menu links are re-colored for the light background (the theme defaults assume a
+   dark sidebar and would fail contrast here). */
+#ui-bar {
+  background-color: #f6f5f1;
+  border-right: 1px solid #d8d4ca;
+  color: #1c2a3a;
+}
+
+#ui-bar a {
+  color: #11497e;
+}
+
+#menu ul li a {
+  color: #1c2a3a;
+}
+
+#menu ul li a:hover,
+#menu ul li a:focus {
+  background-color: #e9e5db;
+  border-color: #d8d4ca;
+  color: #0c3257;
+}
+
+#ui-bar-toggle,
+#ui-bar-tray button {
+  color: #1c2a3a;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+/* 320px reflow: single column, no fixed-width anything */
+@media (max-width: 600px) {
+  #passages {
+    padding: 0.5rem 0.6rem 2rem;
+  }
+  .passage {
+    padding: 1rem 0.9rem 1.2rem;
+  }
+}
+
+:: StoryJavaScript [script]
+/* Focus management: after each passage renders, move focus to its heading so
+   screen readers announce the new passage title (WCAG 2.4.3). The heading gets
+   tabindex="-1" so it can receive programmatic focus. The focus call retries
+   briefly (render timing differs between first load and in-story navigation)
+   and is re-applied once after window load; behavior is verified by the scripted
+   Playwright tests in tests/scenario-tests.mjs. */
+function focusPassageHeading() {
+  var tries = 0;
+  (function attempt() {
+    var el = document.querySelector('#passages .passage:last-of-type');
+    var heading = el && el.querySelector('h2, h1');
+    if (heading) {
+      if (!heading.hasAttribute('tabindex')) {
+        heading.setAttribute('tabindex', '-1');
+      }
+      heading.focus({ preventScroll: true });
+    } else if (++tries < 10) {
+      window.setTimeout(attempt, 60);
+    }
+  })();
+}
+$(document).on(':passagedisplay', function () {
+  window.setTimeout(focusPassageHeading, 0);
+});
+window.addEventListener('load', function () {
+  window.setTimeout(focusPassageHeading, 0);
+});
+/* First-load safety net: SugarCube's opening display does not always emit
+   :passagedisplay, so a few early attempts guarantee the opening passage gets
+   focus even on a cold load or a session restore. */
+[0, 300, 900].forEach(function (delay) {
+  window.setTimeout(focusPassageHeading, delay);
+});
+
+:: StoryInit
+<<set $score to 0>>
+<<set $d1 to "unset">>
+<<set $d2 to "unset">>
+<<set $d3 to "unset">>
+
+:: PassageFooter [footer]
+<div class="story-foot"><p>Simulated training scenario — Brightline Health Services is fictional (constructed for portfolio purposes). Content: CC BY 4.0. Code: MIT. <a href="../../index.html">About this case study</a></p></div>
+
+:: Start
+!! Monday, 07:42
+
+You are ''Sam'', a manager at Brightline Health Services. Three months ago you were a senior nurse; today you have ''14 direct reports'', a rota to build, and — you have just realized — no one-on-one meetings scheduled with anyone. There was no management training; there was a folder of HR policies you meant to read.
+
+Priya is one of your best nurses. Nine years on the unit, patients ask for her by name. But for the past few weeks her ''handovers have been incomplete'' — missing allergies, a missed consent check — and yesterday your colleague Marcus complained about it for the second time. Twice this week another unit had to call back for information Priya's handover should have contained.
+
+You have seen it yourself twice. You have said nothing so far.
+
+Priya is at the nurses' station now, checking the board before handover. Marcus is hovering nearby, arms crossed.
+
+<div class="choices">
+<p>[[Head over and talk to Priya->D1]]</p>
+</div>
+
+:: D1
+!! Decision 1 — Opening the conversation
+
+You walk over. Priya looks up, slightly guarded — she has seen you reading the handover sheets.
+
+What do you open with?
+
+<div class="choices">
+<p>[[“Hey Pri, how's it going? Everything fine?” — keep it light, see if she raises it herself->D1-Avoid]]</p>
+<p>[[“Priya, we've had complaints about your handovers. They need to improve — starting today. This is important.” — be direct, show it's serious->D1-Push]]</p>
+<p>[[“Priya — can I grab you for five minutes? I want to talk about yesterday's evening handover: the allergy line was missing. What's your take on what's going on?”->D1-Strong]]</p>
+</div>
+
+:: D1-Avoid
+<<set $d1 to "avoid">>
+<<set $score to $score - 1>>
+!! Small talk
+
+"Hey Pri, how's it going? All fine?"
+
+"Fine," Priya says. "Busy weekend. You?"
+
+Ninety seconds of weather later you walk away having said nothing about handovers. Marcus catches your eye from across the station and raises his eyebrows. You resolve to "keep an eye on it".
+
+[[A few days later->C1]]
+
+:: D1-Push
+<<set $d1 to "push">>
+<<set $score to $score + 0>>
+!! Getting it on the record
+
+"Priya, we've had complaints about your handovers. They need to improve — starting today. This is important."
+
+Priya goes very still. "Complaints. From who?"
+
+"From the unit. It's just — it needs to be better, okay? Quality is slipping."
+
+She nods slowly, once. "Understood." She turns back to the board. The conversation is over in under a minute, and you are not sure what you agreed.
+
+[[A few days later->C1]]
+
+:: D1-Strong
+<<set $d1 to "strong">>
+<<set $score to $score + 1>>
+!! One specific moment
+
+"Priya — can I grab you for five minutes? I want to talk about yesterday's evening handover: the allergy line was missing."
+
+You tell her exactly what you saw — Thursday's sheet, the missing allergy line, the callback from the other unit — and then you stop talking and ask: ''"What's your take on what's going on?"''
+
+Priya is quiet for a moment. "It's been a mess, honestly. Since the new admissions system, the evening sheets don't populate right, and I've been finishing them from memory. I'm scared I'll miss something. I did mention it in the huddle two weeks ago, but it dropped."
+
+You did not know any of that.
+
+[[A few days later->C1]]
+
+:: C1
+!! What happens next
+
+<<if $d1 is "strong">>
+The next morning you ask the systems team about the evening sheets — it is a two-line fix, done by Friday. Priya sends you a short message: //"Thanks for actually asking instead of just telling."// One conversation did not fix everything. But Priya knows you saw it, and you know what was causing it.
+<<elseif $d1 is "push">>
+Priya's handovers over the next few days are //immaculate// — the allergy lines present, every field complete. For exactly the sheets you are likely to check. On the Friday, the agency nurse on the late shift files an incomplete handover from the same station, and Marcus complains about that too. Whatever Priya changed, the system that made her handovers slip in the first place is untouched.
+<<else>>
+Over the next few days, nothing changes. Priya's handovers stay patchy. Marcus complains a third time and asks you, flatly: "Did you talk to her?" You said you would "keep an eye on it", and now you have to say it again. The gap between knowing and saying has cost you a week.
+<</if>>
+
+[[Two weeks later->D2]]
+
+:: D2
+!! Decision 2 — The pushback
+
+Two weeks later you have your first properly scheduled one-on-one with Priya — fifteen minutes, booked in the calendar, the new template open on your laptop. (Brightline's new one-on-one standard made that possible; a month ago you'd have had to invent the time.)
+
+You raise the handovers again — and this time Priya pushes back hard.
+
+"''Nine years'' I've done this job. Nine years, and nobody complained. Now there's a new system, endless paperwork, and suddenly //I'm// the problem? Maybe get the new grads to proofread their own sheets instead of auditing mine."
+
+Your stomach drops. The room is very quiet.
+
+<div class="choices">
+<p>[[“You're right — I'm sorry, I shouldn't have raised it. Forget it.” — drop it, she's earned the benefit of the doubt->D2-Back]]</p>
+<p>[[“It's not personal, Priya — handover completeness is mandatory, it's in the policy. I need you to comply.” — hold the line on the rule->D2-Push]]</p>
+<p>[[“You're right that the system change made things harder — that's on me to fix. And the handovers still have to be complete: that's a patient-safety line. What would make them easier to get right?”->D2-Strong]]</p>
+</div>
+
+:: D2-Back
+<<set $d2 to "back">>
+<<set $score to $score - 1>>
+!! Stepping back
+
+"You're right — I'm sorry, I shouldn't have raised it. Forget it."
+
+Priya shrugs. "Okay." She checks the time. "Is that everything?"
+
+You spend the rest of the fifteen minutes on rota questions. You have demonstrated, with permission, that raising a problem with Priya is something that can be made to go away by pushing back hard enough. You will remember that the next time you decide not to raise something.
+
+[[Later that week->C2]]
+
+:: D2-Push
+<<set $d2 to "push">>
+<<set $score to $score + 0>>
+!! Holding the line
+
+"It's not personal, Priya — handover completeness is mandatory, it's in the policy. I need you to comply."
+
+"It's in the policy," she repeats. "Right."
+
+She picks up her pen. The last eight minutes of your one-on-one are the quietest you have ever spent with a colleague. Nothing is agreed, nothing is offered, and the policy — which neither of you wrote, and which did not add the evening paperwork — is the only thing left standing in the room.
+
+[[Later that week->C2]]
+
+:: D2-Strong
+<<set $d2 to "strong">>
+<<set $score to $score + 1>>
+!! Acknowledge, then hold
+
+"You're right that the system change made things harder — that's on me to fix. And the handovers still have to be complete: that's a patient-safety line. What would make them easier to get right?"
+
+Priya looks at you for a long moment. "If you're actually fixing the sheets… a handover checklist would help. And forty minutes, not twenty-five, on late shifts. It's not the handover that's the problem, it's that it starts already behind."
+
+You write both down. One is yours to fix; one is a staffing question you can raise, honestly, as a staffing question.
+
+[[Later that week->C2]]
+
+:: C2
+!! What happens next
+
+<<if $d2 is "strong">>
+The checklist goes up on Friday — Priya drafted it, which is why everyone else actually uses it. The late-shift timing goes to the ops director as a question rather than a grievance. At handover on Monday, Priya walks the new grad through the checklist herself, out loud, the way she wished someone had done for her.
+<<elseif $d2 is "push">>
+Priya does not miss a deadline, skip a shift, or give you any reason to write anything down. Her handovers are compliant. She stops volunteering for the huddle, and the charge nurse mentions that Priya asked — casually — whether the agency across town still runs a fortnightly rota. Nothing has happened. That is what worries you.
+<<else>>
+The next team huddle runs without Priya raising a single issue. When you ask her about the agency nurse's induction, she says "I'm sure it's fine" in a tone you have never heard her use about patient care. You dropped a patient-safety concern because it was uncomfortable to hold, and everyone on the unit watched you do it.
+<</if>>
+
+[[The next one-on-one->D3]]
+
+:: D3
+!! Decision 3 — Closing the loop
+
+Your next one-on-one with Priya is in the calendar. The checklist is live, the sheets are fixed, and this is the meeting where you give one real piece of feedback and agree what happens next. The template in front of you has five prompts; the last two are //"one piece of specific feedback"// and //"next step + book the next one."//
+
+It has been a demanding month. Priya covered two extra shifts during the flu wave — she is visibly tired, and visibly proud of it.
+
+<div class="choices">
+<p>[[Cancel — you're slammed, and she's exhausted. Reschedule for next month; she'll understand->D3-Cancel]]</p>
+<p>[[Open with how brilliant she was during the flu wave, mention the handover thing somewhere in the middle, close with another compliment — keep it positive->D3-Sandwich]]</p>
+<p>[[Give one specific piece of feedback on how the handover fix went, ask for her view, agree one next step — and book the next one-on-one before she leaves->D3-Strong]]</p>
+</div>
+
+:: D3-Cancel
+<<set $d3 to "cancel">>
+<<set $score to $score - 1>>
+!! The meeting that wasn't
+
+You send the cancellation at 07:55: //"Slammed — let's push to next month."// Priya replies with a thumbs-up.
+
+Next month there will be a flu wave, or an audit, or a Monday. There is always something. The one-on-one standard says fortnightly; you have now demonstrated that your meetings are the first thing the fortnight sacrifices. Priya learns what her priorities are by watching which appointments you keep.
+
+[[Four weeks later->C3]]
+
+:: D3-Sandwich
+<<set $d3 to "sandwich">>
+<<set $score to $score + 0>>
+!! The compliment sandwich
+
+"You were incredible during the flu wave — seriously, the unit would have sunk without you. Oh, and the handover checklist is working well, though maybe keep an eye on the late sheets. Anyway — brilliant work, the GPs keep asking where we find people like you."
+
+Priya smiles, thanks you, and leaves. In the car park she asks the charge nurse what "keep an eye on the late sheets" was about. Nobody knows. The one clear piece of feedback you had to give is now a rumor with a compliment on each side.
+
+[[Four weeks later->C3]]
+
+:: D3-Strong
+<<set $d3 to "strong">>
+<<set $score to $score + 1>>
+!! Specific, then listen
+
+"Two weeks ago your evening handover was missing the allergy line; since the checklist went up, you've caught two gaps yourself — that's exactly what right looks like. One thing I want to build on: the late-shift sheets. What's your view on them?"
+
+Priya tells you the late sheets are still printing without the medication tab. You agree she'll flag it to systems directly, and you'll raise the late-shift timing with the ops director — the same staffing question she raised in week one. Before she leaves: "Same time in two weeks — I've booked it."
+
+The feedback took ninety seconds. The booking took ten.
+
+[[Four weeks later->C3]]
+
+:: C3
+!! What happens next
+
+<<if $d3 is "strong">>
+Priya flags the medication tab to systems; it is fixed by Thursday. Your one-on-one with her is now the least cancellable meeting in your week, and two of her teammates have asked how they get "one of those handover checklists". The conversation you practiced — specific, two-way, with a booked next step — is becoming how the unit talks.
+<<elseif $d3 is "sandwich">>
+The handover problem is still quietly there, wrapped in politeness. Priya performs well and hears praise; what she doesn't hear is a single clear sentence about what to keep doing and what to change. At the annual review she will rate herself "communication: strong", and neither of you will have a shared fact to say otherwise.
+<<else>>
+Priya's one-on-one has been cancelled three times in a row. The checklist is still on the wall, going yellow. When the flu wave's overtime payments are processed, Priya's name is on the agency list across town — fortnightly rota, guaranteed check-ins. Her exit interview will say, in the "what would have made you stay" box: //"regular feedback / didn't feel supported."// It will be the fourth one this year.
+<</if>>
+
+<<if $score gte 3>>[[Continue->End_Improved]]<<elseif $score gte 0>>[[Continue->End_Unresolved]]<<else>>[[Continue->End_Escalated]]<</if>>
+
+:: End_Improved
+!! Ending — The problem, handled
+
+Four weeks later: Priya's handovers are complete and she is coaching the two new grads through the checklist. Marcus has run out of complaints. The evening sheets are fixed at the source, the late-shift timing is on the ops director's agenda, and your fortnightly one-on-ones are booked through the end of the quarter — with Priya and ten of your other thirteen reports.
+
+Nothing about this required you to be a different person. It required one specific conversation, held twice, inside a structure that made it repeatable.
+
+<div class="choices">
+<p>[[Debrief->Debrief]]</p>
+</div>
+
+:: End_Unresolved
+!! Ending — Quietly stuck
+
+Four weeks later: Priya is polite, professional, and impossible to read. Her handovers are fine when she is on shift; the gaps now come from the newer staff nobody is coaching. Your one-on-ones happen "when we can" — which the calendar interprets as never.
+
+Nobody is angry. Nothing is on fire. The problem is simply still there, and you have learned to walk past it, which is the most expensive lesson a new manager can pick up.
+
+<div class="choices">
+<p>[[Debrief->Debrief]]</p>
+</div>
+
+:: End_Escalated
+!! Ending — Escalation
+
+Four weeks later: a night-shift handover gap contributes to a delayed insulin dose; nobody is harmed, but the incident report asks a question you cannot answer — //"what support and supervision was in place?"// There is no record of a one-on-one with the nurse in question for six weeks.
+
+Priya has accepted a fortnightly-rota post across town. Her exit interview cites "no feedback / didn't feel supported." Your own manager asks what you did when the problem first surfaced. The honest answer — small talk, a withdrawn concern, three cancelled meetings — is the worst part of the report.
+
+<div class="choices">
+<p>[[Debrief->Debrief]]</p>
+</div>
+
+:: Debrief
+!! Debrief — what this scenario was practicing
+
+''Your path through this playthrough:''
+
+<<if $d1 is "strong">>You ''opened with one specific moment'' (the missing allergy line) and asked for Priya's view before proposing anything.<<elseif $d1 is "push">>You ''opened with a general complaint'' — "your handovers need to improve" — which gave Priya nothing to act on and something to defend against.<<else>>You ''opened with small talk and waited'' for the problem to raise itself; it didn't, and the week was lost anyway.<</if>>
+
+<<if $d2 is "strong">>When Priya pushed back, you ''acknowledged the real constraint, then held the safety line'' — and asked what would make the job easier.<<elseif $d2 is "push">>When Priya pushed back, you ''fell back on the policy''. The policy was never the problem, and compliance is not the same as a working handover.<<else>>When Priya pushed back, you ''apologised and withdrew the concern'' — teaching everyone watching that pushback ends conversations.<</if>>
+
+<<if $d3 is "strong">>At the follow-up, you ''gave one specific piece of feedback and booked the next meeting'' — the loop that keeps a habit alive.<<elseif $d3 is "sandwich">>At the follow-up, you ''buried the feedback inside compliments'', and it arrived as a rumor.<<else>>At the follow-up, you ''cancelled'' — and the calendar learned that one-on-ones are optional.<</if>>
+
+<div class="debrief-note">
+<p>''The model under the strong path'' — and the one on the <a href="../job-aid/index.html">"Feedback in 5 minutes" job aid</a>: <em>situation → behavior → impact → request → listen</em>, then book the next one. Notice the scenario also gave Sam things ''no amount of skill could fix alone'': broken evening sheets, late-shift timing, an unset one-on-one standard. On this unit, the //system// fixes (a cadence, a template, rostered time, a form that asks a real question) had to exist before the conversation could happen. That is the finding the <a href="../../03-analysis/is-it-training.html">case study analysis</a> builds to: most of this problem was never a training problem.</p>
+</div>
+
+''What each decision was really testing:''
+
+!!! Decision 1 — Opening the conversation
+''Strong:'' name one specific, recent behavior and ask for their view. ''Realistic mistake:'' a general complaint ("improve your handovers") that gives nothing to act on. ''Avoidant:'' small talk; hope the problem surfaces on its own.
+
+!!! Decision 2 — The pushback
+''Strong:'' acknowledge the real constraint, hold the safety line, ask what would help. ''Realistic mistake:'' hide behind the policy. ''Avoidant:'' apologise and withdraw the concern.
+
+!!! Decision 3 — Closing the loop
+''Strong:'' one specific piece of feedback, one agreed next step, the next one-on-one booked. ''Realistic mistake:'' the compliment sandwich. ''Avoidant:'' cancel — "next month".
+
+Where did each option come from? Every one of them is a behavior the <a href="../../02-discovery/interview-notes-simulated.html">discovery interviews</a> heard from a real (fictional) Brightline manager.
+
+<div class="choices">
+<p>[[Play again->Start]]</p>
+<p><a href="../../index.html">Back to the case study</a></p>
+</div>
