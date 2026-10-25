@@ -8,7 +8,7 @@ One-sentence summary: a stakeholder asks for "feedback training for managers"; t
 
 > **Simulated case, constructed for portfolio purposes.** Brightline Health Services and everyone in it are fictional; all interviews, survey data and documents were built to demonstrate the process. AI-assisted authorship is disclosed below.
 
-**Evaluation status:** Automated accessibility testing and agent-based design reviews are complete. AI-simulated learner and review-panel evaluations are pending. No real learners have tested this yet. See evaluation/METHODS.md.
+**Evaluation status:** Automated accessibility testing is complete, and a fresh-context agent design review (cognitive walkthrough + heuristic evaluation, 2026-10-26) is complete — its 10 findings are addressed. AI-simulated learner and review-panel evaluations are pending. No real learners have tested this yet. See evaluation/METHODS.md.
 
 ## The problem
 
@@ -51,16 +51,16 @@ Each decision, the alternative, and the evidence behind it (full list in [DECISI
 - Scripted Playwright tests of the scenario — keyboard-only playthrough, all three ending paths with step counts, focus management (`:passagedisplay` → passage heading), 320px reflow / 400%-zoom equivalent (WCAG-EM), no timed choices, zero page errors. **11/11 passing** ([results](evaluation/scenario-test-results.json), [report](docs/06-measure/usability-test-report.md)).
 - axe-core audits of the compiled scenario and job aid — **0 critical/serious violations** (0 total).
 - `ariaSnapshot()` accessibility-tree captures committed as screen-reader-output evidence (Guidepup/VoiceOver automation is not functional on this machine's macOS version — **no VoiceOver testing is claimed**; a manual protocol is provided).
+- A **fresh-context agent design review** of the live site — cognitive walkthrough (3 personas), heuristic evaluation (Nielsen's 10) and a structured review form — returned 10 findings; all were addressed and re-verified ([report](evaluation/agent-review.md), including the reviewer's own live playthroughs of all three endings, keyboard/focus checks and axe re-runs).
 
 **What is pending (pipelines built, keys required):**
 
 - AI-simulated learner runs (4 personas × 2 prior-knowledge levels × ≥2 models) with a **>75% same-choice revision flag** — `npm run eval:pending` ([method](evaluation/METHODS.md)).
 - Multi-model agent review panel (3 reviewer roles, rubric agreement + Cohen's κ) — same command.
-- Reviewer cognitive walkthrough + heuristic evaluation (review form ready in `evaluation/human-protocol/`).
 
 **What this evidence can and cannot show.** It *can* show: analysis rigor (every cause traces to cited simulated evidence), that the scenario's flows, keyboard support, focus behavior and reflow actually work, and that the accessibility claims match machine-checked evidence. It *cannot* show: real learner experience, learning gains, behavior change, or turnover impact — the data is simulated and nothing was deployed. No real learners have tested this. Every AI-simulated or agent-produced output is labeled by method, never presented as human.
 
-**What changed because of testing:** 4 documented revisions (focus safety net, debrief table → lists for 320px, sidebar contrast, link-markup fix) — each found by a scripted check and re-verified; ledger in the [usability test report](docs/06-measure/usability-test-report.md).
+**What changed because of testing and review:** 4 documented revisions from the scripted checks (focus safety net, debrief table → lists for 320px, sidebar contrast, link-markup fix) plus 10 review-driven revisions from the agent design review — the headline being the scenario's option-order rebalancing so no option announces itself as correct — each found, fixed and re-verified; ledgers in the [usability test report](docs/06-measure/usability-test-report.md), [evaluation/agent-review.md](evaluation/agent-review.md) and [DECISIONS.md](DECISIONS.md).
 
 ## Accessibility
 
@@ -78,7 +78,7 @@ Designed against WCAG 2.1 AA and tested, not assumed:
 This project was built with AI assistance, and the split is disclosed so the work can be judged honestly:
 
 - **Built by an AI coding agent** (analysis artifacts, scenario, site, tests, pipelines), working from a design brief and locked case facts. All simulated "evidence" (interviews, survey data, documents) was **constructed by that agent for portfolio purposes** and is labeled as such — nothing describes a real organization.
-- **Reviewed by automation** (scripted tests, axe audits, seeded-data verification) as described above; four revisions were made because of those checks.
+- **Reviewed by automation** (scripted tests, axe audits, seeded-data verification) as described above; four revisions were made because of those checks. **Also reviewed by a separate AI reviewer agent** (fresh context, did not build the repo; may share a model family with the builder — disclosed in the report): its 10 findings and the resulting revisions are in [evaluation/agent-review.md](evaluation/agent-review.md).
 - **What remains human:** the design judgment encoded in the brief, the decision to publish, and — pending — the reviewer walkthrough and human usability sessions. Agent/AI evaluation is labeled by method everywhere and never presented as human or expert feedback.
 - **Reproducibility:** the survey CSV regenerates byte-identically from its seed (`node scripts/generate-survey.mjs --verify`); scenario builds are scripted; every pipeline supports `--dry-run`.
 
@@ -86,7 +86,7 @@ This project was built with AI assistance, and the split is disclosed so the wor
 
 - **Ship a playable-but-smaller scenario sooner.** Getting the focus/keyboard behavior right took several test-fix cycles; earlier scripted testing would have caught the SugarCube quirks (no `:passagedisplay` on first display, quote parsing) before the CSS work.
 - **Add a calendar-audit artifact.** Discovery asserts that one-on-ones aren't scheduled; a simulated calendar extract would make that cause even harder to argue with.
-- **Run the pending evaluations** (reviewer walkthrough, simulated learner runs, review panel) and the human protocol with 3–5 real participants.
+- **Run the pending evaluations** (simulated learner runs, multi-model review panel) and the human protocol with 3–5 real participants.
 - **Extend the scenario** with a second character thread (Marcus) once the core loop is validated.
 
 ## Tools used

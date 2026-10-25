@@ -6,7 +6,7 @@ nav_order: 3
 
 # Usability test report — the branching scenario and job aid
 
-> **Read the labels.** The only testing that has been performed so far is **automated**: scripted Playwright checks and axe-core audits, run by the build agent. No humans have tested this scenario. The reviewer walkthrough and AI-simulated learner runs are pending, and a human usability protocol is ready in `evaluation/human-protocol/`. Nothing below is a claim about real learner experience.
+> **Read the labels.** The testing performed so far is **automated and agent-based**: scripted Playwright checks and axe-core audits run by the build agent, plus a **fresh-context agent design review** (completed 2026-10-26, [`evaluation/agent-review.md`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md)). No humans have tested this scenario. The AI-simulated learner runs and review panel are still pending, and a human usability protocol is ready in `evaluation/human-protocol/`. Nothing below is a claim about real learner experience.
 
 ## What was tested, and by what
 
@@ -15,7 +15,7 @@ nav_order: 3
 | Scripted Playwright tests (keyboard-only playthrough, three ending paths with step counts, focus management, 320px reflow / 400%-zoom equivalent, no timed choices, error monitor) | Build agent, automated (Chromium 143, Playwright 1.57.0) | **Done — 11/11 passing** | The flows work; keyboard works; focus works; no reflow failures |
 | ariaSnapshot captures (accessibility-tree output) | Build agent, automated | **Done** (committed in `evaluation/aria-snapshot/`) | What a screen reader would consume — *not* a substitute for a real screen reader user |
 | axe-core audit (WCAG 2.1 A/AA + best practice) | Build agent, automated | **Done — 0 violations** on scenario and job aid | Standards conformance of the rendered DOM |
-| Cognitive walkthrough + heuristic evaluation (Nielsen) of the scenario and the case-study pages | Reviewer agent (fresh context, not the build agent) | **Pending** — orchestrated by the portfolio owner; form ready: `evaluation/human-protocol/structured-review-form.md` | Usability and clarity gaps; not real-user evidence |
+| Cognitive walkthrough + heuristic evaluation (Nielsen) of the scenario and the case-study pages | Reviewer agent (fresh context, not the build agent) | **Done 2026-10-26** — report: [`evaluation/agent-review.md`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md); 10 findings, all addressed | Usability and clarity gaps; not real-user evidence |
 | Simulated learner runs (personas × prior knowledge, ≥8 runs) | API pipeline `evaluation/run-simulations.mjs` | **Pending: requires API key** | Ambiguous options, obvious distractors, unrealistic steps; not learning gains |
 | Multi-model review panel | API pipeline `evaluation/run-review-panel.mjs` | **Pending: requires API key** | Findings with model agreement; not expert endorsement |
 | Human usability sessions (n = 3–5, think-aloud, per the plan) | Portfolio owner | **Not run** — script, consent text and findings template ready in `evaluation/human-protocol/` | Real user experience |
@@ -56,8 +56,20 @@ The scripted tests were run during the build, not after — each failure below w
 3. **A custom light sidebar made SugarCube's menu links fail WCAG contrast** (light text `#eee` on the new light background — axe caught 2 serious nodes). **Revision:** sidebar link and hover colors were re-specified for the light theme; the audit is now 0 violations.
 4. **Two choice links silently mis-parsed.** The scripted playthrough reported missing links: SugarCube's smart-quote handling mangles ASCII `"` inside `[[link->target]]` markup. **Revision:** choice labels now use typographic quotes; the all-paths test proves every option link navigates to the intended passage.
 
+## Revisions made because of the agent review (2026-10-26)
+
+The fresh-context agent review ([`evaluation/agent-review.md`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md)) returned 10 findings; all were addressed with wording-level changes and re-verified:
+
+1. **Scenario option telegraphing (high).** The strong option was last, longest and the only un-glossed choice in all three decisions — contradicting the design doc's own "no obviously right option" check. **Revision:** strong option moved first in Decision 1 and middle in Decision 2; editorial glosses stripped from D1/D2 labels; the strong opener trimmed; Decision 2's policy-first mistake rewritten from a caricature ("I need you to comply") to a realistic pressured-manager line. Rebuilt and re-tested: 11/11.
+2. **Proposal cost table** omitted the blend's recurring 1:1 manager time (~2 h/manager/week at the median span of 13, per the repo's own document-review arithmetic). **Revision:** recurring-time row added, the compared row retitled "Training-specific time", and the 1:1 time framed as the intervention displacing rework/exit costs.
+3. **Turnover savings overstated** ("roughly 6 exits / ~$56k"; the arithmetic is 7 pts × 78 ≈ 5.5 exits ≈ $51k). **Revision:** restated as ≈5–6 exits / ≈$47–56k in performance-gap, proposal, dashboard and the action map.
+4. **BEM table repair:** the individual row reused the environment column labels (Information/Resources/Incentives) instead of Gilbert's Knowledge/Capacity/Motives; nine cause IDs for a four-cause story; a miscount ("four of the six environmental cells" — the model has six cells, three of them environmental, all three carrying causes). **Revision:** table split into environment/individual with Gilbert's labels, collapsed to the four primary cause IDs with a mapping note, count fixed, and the S-1 evidence cell broadened (M2's contradiction + survey Findings 1/3) so the one training-justifying cause no longer rests on a single interview.
+5. **Lower-severity fixes:** job-aid example de-scoped from a scenario character's name to "a colleague"; simulated-case labels added to six pages that relied on section-index banners; the pulse target's deadline ("within 2 quarters") aligned into the measurement plan's quarterly row; the design doc's false "(opens in a new tab)" claim dropped.
+
+Review findings noted but **not** fixed (recorded in `DECISIONS.md`): no overall progress indicator in the scenario (severity 2), the D3 option-style shift (quoted dialog vs abstract description), no "skip to the decisions" replay affordance, and unexplained jargon ("Gilbert's BEM", "Mager & Pipe") on first home-page encounter.
+
 ## What this evidence cannot show (and what would)
 
 - **Not real users:** the scripted tests prove the *machinery* works. Whether the situation feels real, whether any option is obviously right, and what a manager would actually learn are questions for humans — the human protocol exists for exactly that and has not been run.
 - **No learning claims:** nothing here shows anyone learned anything. At most, future simulated runs can surface *clarity* problems (see METHODS for the can/can't list).
-- **One author's lens:** everything was built and machine-tested by the same agent. The pending reviewer walkthrough (fresh context) and the multi-model panel exist to counter that; until they run, this report is the whole of the evidence — which is why its limits are stated this prominently.
+- **One author's lens:** everything was built and machine-tested by the same agent. The fresh-context reviewer walkthrough has now run (2026-10-26 — see `evaluation/agent-review.md` and the revisions section above), but it is still agent evidence, not human evidence: the multi-model review panel, simulated learner runs and human sessions remain outstanding.
