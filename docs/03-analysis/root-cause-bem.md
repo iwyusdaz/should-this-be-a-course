@@ -12,7 +12,7 @@ Thomas Gilbert's Behavior Engineering Model sorts the forces that shape performa
 
 ## The BEM table
 
-| | **Information** (what people need to know/see) | **Resources** (time, tools, processes) | **Incentives** (payoffs, consequences) |
+| **Cause** | **Information** (what people need to know/see) | **Resources** (time, tools, processes) | **Incentives** (payoffs, consequences) |
 |---|---|---|---|
 | **Environment** | **Cause E/P-1.** No definition or expectation of regular one-on-ones; policy says only "encouraged". *Evidence: HR-P-014 document review; M3 never saw it; HR1 confirms it is untracked.* | **Cause E-2.** One-on-ones are not scheduled; no template; no rostered time; spans of 12–18 direct reports (median 13) make informal contact impossible. *Evidence: M1, M3; org chart extract; document review; survey Findings 2 & 4.* | **Cause M-4.** Scorecards measure throughput only (0% weight on team development); feedback work is invisible and unrewarded. *Evidence: scorecard document review; M1, M2, M3; HR1.* |
 | | **Cause P-2.** The annual review form collects ratings only, with an optional comments box — no place to record behavior, impact, or agreed actions. *Evidence: form review; S1, M2; HR1.* | **Cause P-1b.** No qualitative feedback points anywhere in the year (annual review is the only formal one). *Evidence: S1, M2; document review.* | |

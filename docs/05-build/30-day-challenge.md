@@ -25,7 +25,7 @@ The challenge exists because the hard part of the [blend](../04-solution/solutio
 
 Print this page and tick as you go — or copy the table into your own notes.
 
-| | Week 1 | Week 2 | Week 3 | Week 4 |
+| Tracker | Week 1 | Week 2 | Week 3 | Week 4 |
 |---|---|---|---|---|
 | One-on-ones held (count) | | | | |
 | Feedback given in them (count) | | | | |

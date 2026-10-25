@@ -47,7 +47,7 @@ We spent two weeks on discovery: six interviews, a 200-person pulse survey acros
 
 ## Cost and time comparison
 
-| | Requested 2-hour course | Recommended blend |
+| Compare | Requested 2-hour course | Recommended blend |
 |---|---|---|
 | Manager time | 140 hrs sitting + scheduling drag ≈ 210 hrs (clinical backfill) | ~90 min each ≈ 105 hrs, spread over 30 days |
 | Build cost | ~$18k (external SCORM build quoted) | ~$6k internal-equivalent (scenario + job aid + template) |

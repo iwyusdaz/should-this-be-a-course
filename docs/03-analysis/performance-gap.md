@@ -12,7 +12,7 @@ A performance gap is a measurable difference between what is happening and what 
 
 ### Level 1: The business result
 
-| | Current (simulated baseline) | Desired | When |
+| Metric | Current (simulated baseline) | Desired | When |
 |---|---|---|---|
 | **90-day new-hire turnover** | **22%** (17 of 78 new hires, trailing 12 months, HRIS) | **15%** | Within 12 months |
 
