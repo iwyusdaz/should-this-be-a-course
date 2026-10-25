@@ -10,7 +10,7 @@ search_enabled: true
 search:
   rel_url: true
 heading_anchors: true
-footer_content: 'Content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Code licensed <a href="https://opensource.org/license/mit">MIT</a> · A portfolio case study with simulated data — see the <a href="attribution.html">attribution page</a>.'
+footer_content: 'Content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Code licensed <a href="https://opensource.org/license/mit">MIT</a> · A portfolio case study with simulated data — see the <a href="https://github.com/iwyusdaz/should-this-be-a-course/blob/main/ATTRIBUTION.md">attribution page</a>.'
 
 # Colors follow the theme default (accessible); no overrides that would break contrast.
 
