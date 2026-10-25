@@ -1,0 +1,15 @@
+{% comment %}
+Custom head additions for Just the Docs (loaded on every Pages page).
+Mermaid renders the ```mermaid blocks used in the analysis and design pages.
+Pinned version; text summaries are provided under every diagram in the
+Markdown source, so nothing here is required for screen-reader access.
+{% endcomment %}
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "neutral",
+    securityLevel: "strict",
+    flowchart: { htmlLabels: false }
+  });
+</script>

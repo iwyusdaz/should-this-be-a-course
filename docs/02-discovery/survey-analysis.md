@@ -14,7 +14,7 @@ nav_order: 4
 
 Staff with a one-on-one at least every two weeks rate feedback usefulness **3.4/5**; staff without one rate it **1.9/5** — a gap of 1.5 points.
 
-![Bar chart. Staff with a one-on-one at least fortnightly rate feedback usefulness 3.4 out of 5 (n=45); staff without a regular one-on-one rate it 1.9 out of 5 (n=85). The takeaway: regular one-on-ones are associated with much higher feedback usefulness.](assets/charts/usefulness-by-1on1.png)
+![Bar chart. Staff with a one-on-one at least fortnightly rate feedback usefulness 3.4 out of 5 (n=45); staff without a regular one-on-one rate it 1.9 out of 5 (n=85). The takeaway: regular one-on-ones are associated with much higher feedback usefulness.](../assets/charts/usefulness-by-1on1.png)
 
 | Group | n | Mean usefulness (/5) |
 |---|---|---|
@@ -26,7 +26,7 @@ Staff with a one-on-one at least every two weeks rate feedback usefulness **3.4/
 
 Usefulness falls monotonically with team size — from 3.1/5 on teams of 12–13 to 1.5/5 on teams of 16–18.
 
-![Bar chart. Mean feedback usefulness by team size band: teams of 12 to 13 score 3.1 out of 5 (n=55), teams of 14 to 15 score 2.2 (n=45), teams of 16 to 18 score 1.5 (n=30). The takeaway: usefulness declines as span of control grows.](assets/charts/usefulness-by-team-size.png)
+![Bar chart. Mean feedback usefulness by team size band: teams of 12 to 13 score 3.1 out of 5 (n=55), teams of 14 to 15 score 2.2 (n=45), teams of 16 to 18 score 1.5 (n=30). The takeaway: usefulness declines as span of control grows.](../assets/charts/usefulness-by-team-size.png)
 
 | Team size band | n | Mean usefulness (/5) |
 |---|---|---|
@@ -38,7 +38,7 @@ Usefulness falls monotonically with team size — from 3.1/5 on teams of 12–13
 
 If the problem were "inexperienced managers", usefulness would rise sharply with manager tenure. It does not — the spread across tenure bands is 0.3 points, against 1.5 points for meeting structure.
 
-![Bar chart. Mean feedback usefulness by manager tenure band: manager under 1 year, 2.3 out of 5 (n=45); manager 1 to 5 years, 2.3 (n=40); manager over 5 years, 2.6 (n=45). The takeaway: manager experience alone explains very little of the difference.](assets/charts/usefulness-by-manager-tenure.png)
+![Bar chart. Mean feedback usefulness by manager tenure band: manager under 1 year, 2.3 out of 5 (n=45); manager 1 to 5 years, 2.3 (n=40); manager over 5 years, 2.6 (n=45). The takeaway: manager experience alone explains very little of the difference.](../assets/charts/usefulness-by-manager-tenure.png)
 
 | Manager tenure band | n | Mean usefulness (/5) |
 |---|---|---|
@@ -50,7 +50,7 @@ This is the finding that redirects the whole engagement: **"train the new manage
 
 ## Finding 4: Only 31% of managers hold one-on-ones at least fortnightly
 
-![Bar chart. Self-reported one-on-one cadence of the 70 people managers: weekly or more, 6 managers; every two weeks, 16; monthly, 26; rarely, 16; never, 6. The takeaway: only 22 of 70 managers (31%) meet the recommended fortnightly cadence.](assets/charts/manager-cadence.png)
+![Bar chart. Self-reported one-on-one cadence of the 70 people managers: weekly or more, 6 managers; every two weeks, 16; monthly, 26; rarely, 16; never, 6. The takeaway: only 22 of 70 managers (31%) meet the recommended fortnightly cadence.](../assets/charts/manager-cadence.png)
 
 | Self-reported cadence | Managers | % of 70 |
 |---|---|---|
@@ -67,7 +67,7 @@ And the meetings that do happen are thin: managers report that only about **1 in
 
 Cedar Point's staff report the most frequent one-on-ones in the company (mean 4.3/5) and the **lowest** feedback usefulness (1.5/5 vs 2.5/5 elsewhere). Its managers meet weekly — and report almost no structured-feedback content in those meetings. HR's business partner flagged the same anomaly in interviews.
 
-![Grouped bar chart. Cedar Point staff (n=12) report a mean one-on-one frequency of 4.3 out of 5 but a feedback usefulness of only 1.5; staff at all other clinics (n=118) report 2.3 frequency and 2.5 usefulness. The takeaway: frequent meetings without structure do not produce useful feedback.](assets/charts/cedar-point-wrinkle.png)
+![Grouped bar chart. Cedar Point staff (n=12) report a mean one-on-one frequency of 4.3 out of 5 but a feedback usefulness of only 1.5; staff at all other clinics (n=118) report 2.3 frequency and 2.5 usefulness. The takeaway: frequent meetings without structure do not produce useful feedback.](../assets/charts/cedar-point-wrinkle.png)
 
 | Clinic | n | Mean 1:1 frequency (/5) | Mean usefulness (/5) |
 |---|---|---|---|
