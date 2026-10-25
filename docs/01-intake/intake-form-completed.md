@@ -25,7 +25,7 @@ nav_order: 2
 |---|---|
 | What is going wrong? | "Employees don't get useful feedback." (engagement survey comment theme) |
 | How do they know? | Annual engagement survey; HR has not analyzed which items or which clinics drive it. Survey report available on request. |
-| Who is affected? | ~830 clinic staff who report to the 70 people managers across 12 regional clinics. |
+| Who is affected? | ~830 clinic staff who report to the 70 people managers across 12 regional clinics (of ~900 staff total). |
 | When did it change? | Unclear. Roughly a third of managers (35% — about 25 of 70) were promoted in the last 18 months during a rapid clinic expansion; HR suspects the wave of new managers is involved but has no data. |
 
 > **Reframing question 1:** *"The engagement survey says a lot of things. Which item, exactly, is lowest — and for whom?"*
@@ -45,7 +45,7 @@ nav_order: 2
 | Field | Entry |
 |---|---|
 | Who has to do something differently? | The 70 people managers (and the leaders who set their priorities and metrics). |
-| What do they do now? | See the [performance gap analysis](../03-analysis/performance-gap.html) for the evidence-based version. At intake, HR's impression: "managers don't give feedback." |
+| What do they do now? | See the [performance gap analysis](../03-analysis/performance-gap.html) for the evidence-based version. Baseline found during discovery: only **31% of managers** hold one-on-ones at least fortnightly, and staff rate "useful feedback in the last 2 weeks" **2.4/5**. At intake, HR's impression: "managers don't give feedback." |
 | What should they do instead? | Unknown at intake — deliberately not specified. To be determined by analysis, not by the intake form. |
 
 > **Reframing question 3:** *"What have you already tried, and what happened?"*

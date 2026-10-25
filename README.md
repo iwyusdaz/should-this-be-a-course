@@ -47,6 +47,7 @@ Each decision, the alternative, and the evidence behind it (full list in [DECISI
 
 **What was measured (automated, done):**
 
+- The locked baseline the whole case hangs together on — **31%** of managers at a fortnightly-or-better one-on-one cadence, **2.4/5** staff pulse score on useful feedback, **22%** 90-day turnover — is produced exactly by the seeded survey generator and re-verified by `scripts/consistency-check.mjs` across intake, CSV, analysis, dashboard and measurement plan.
 - Scripted Playwright tests of the scenario — keyboard-only playthrough, all three ending paths with step counts, focus management (`:passagedisplay` → passage heading), 320px reflow / 400%-zoom equivalent (WCAG-EM), no timed choices, zero page errors. **11/11 passing** ([results](evaluation/scenario-test-results.json), [report](docs/06-measure/usability-test-report.md)).
 - axe-core audits of the compiled scenario and job aid — **0 critical/serious violations** (0 total).
 - `ariaSnapshot()` accessibility-tree captures committed as screen-reader-output evidence (Guidepup/VoiceOver automation is not functional on this machine's macOS version — **no VoiceOver testing is claimed**; a manual protocol is provided).

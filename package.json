@@ -10,7 +10,9 @@
     "build:charts": "node scripts/make-charts.mjs",
     "test:scenario": "node tests/scenario-tests.mjs",
     "eval:pending": "node evaluation/run-simulations.mjs && node evaluation/run-review-panel.mjs",
-    "eval:dry-run": "node evaluation/run-simulations.mjs --dry-run && node evaluation/run-review-panel.mjs --dry-run"
+    "eval:dry-run": "node evaluation/run-simulations.mjs --dry-run && node evaluation/run-review-panel.mjs --dry-run",
+    "check:links": "node scripts/check-links.mjs",
+    "check:consistency": "node scripts/consistency-check.mjs"
   },
   "devDependencies": {
     "playwright": "1.57.0",
