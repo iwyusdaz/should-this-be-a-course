@@ -68,6 +68,7 @@ Designed against WCAG 2.1 AA and tested, not assumed:
 
 - **Scenario:** playable by keyboard alone (verified by scripted Tab/Enter playthrough); focus moves to each new passage heading for screen readers (verified); no timed choices; reflows at 320px / 400% zoom without horizontal scrolling (verified, WCAG-EM method); ≥4.5:1 text contrast; visible focus indicators; respects `prefers-reduced-motion`; `ariaSnapshot` captures committed in `evaluation/aria-snapshot/`.
 - **Site:** one `<h1>` per page with logical heading order, `lang` attributes, alt text carrying each chart's takeaway plus a full data table beside every chart, text summary under every Mermaid diagram (Mermaid SVGs aren't reliably announced), Just the Docs theme (v0.12.0, pinned) with search.
+- **Verified on the live site (post-publish):** axe audits of 11 key pages (home, scenario, job aid, one page per section) — **0 violations** (0 critical/serious/moderate/minor; one axe *incomplete* on the theme's own active-nav-link contrast, not a violation of this project's making); live link crawl of 32 pages — **0 broken links**; 320px reflow re-verified on 5 live pages.
 - **Documents:** the job aid ships as semantic HTML and a **tagged PDF**.
 - **Known limits, stated:** no VoiceOver/manual screen-reader testing has been performed (protocol provided for a human run); no testing with users of assistive technology; simulated personas were never used to stand in for disabled users.
 - **Tooling:** axe-core 4.11.1, Playwright 1.57.0 scripted checks, Lighthouse 13 (spot checks).

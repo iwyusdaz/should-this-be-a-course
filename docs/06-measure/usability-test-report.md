@@ -43,6 +43,8 @@ Machine-readable results: [`evaluation/scenario-test-results.json`](https://gith
 
 **Step counts:** every full playthrough is 12 passages (start + 3 decision points + 3 consequence scenes + 3 continuations + 1 ending + debrief), with 3 options per decision. Paths converge by design; consequence text varies with choices even where the route does not.
 
+**Post-publish verification of the live Pages build (2026-10-26):** the deployed site was re-checked, not just the local files — axe audits of 11 key pages: **0 violations** (one axe *incomplete* on the theme's active-nav-link contrast); live link crawl: 32 pages, **0 broken**; 320px reflow re-verified on 5 live pages; Mermaid diagrams confirmed rendering. Three publishing-stage defects were found and fixed by these live checks: the Pages build originally ignored the repo-root `_config.yml` (theme fell back to the default), the Mermaid loader's `//` comments were swallowed when the build collapsed the head include onto one line, and one page had an h1→h3 heading skip.
+
 **Screen-reader-output fallback, stated plainly:** Guidepup/VoiceOver automation was attempted and does not function on this machine's macOS version (macOS 27). What is committed (`evaluation/aria-snapshot/`) is the browser accessibility tree via Playwright's `ariaSnapshot()` — useful evidence, **not** VoiceOver testing, and **no VoiceOver testing is claimed**. The manual check protocol for a human run is in `evaluation/human-protocol/manual-voiceover-check.md`.
 
 ## Revisions made because of testing (4)
