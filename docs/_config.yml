@@ -17,9 +17,4 @@ footer_content: 'Content licensed <a href="https://creativecommons.org/licenses/
 plugins:
   - jekyll-remote-theme
 
-# Keep large data files out of the Jekyll processor; they are static assets.
-keep_files:
-  - 02-discovery/survey-data-simulated.csv
-
-exclude:
-  - 05-build/scenario/README-internal.md
+# Note: with Pages source = /docs, this file lives inside docs/ so the build sees it.

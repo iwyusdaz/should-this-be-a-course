@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T17:42:50.055Z",
+  "generated": "2026-10-25T18:01:56.662Z",
   "scenario": "docs/05-build/scenario/index.html",
   "tool": "Playwright 1.57.0 (Chromium headless)",
   "note": "Scripted tests replace the automatable parts of the usability check. They prove the flows, keyboard support, focus management and reflow; they are not real user testing.",
