@@ -6,6 +6,9 @@ code blocks (pre > code.language-mermaid), so this loader converts them to
 mermaid containers before running mermaid.run(). Pinned version; a text
 summary is provided under every diagram in the Markdown source, so nothing
 here is required for screen-reader access — the diagrams are an enhancement.
+IMPORTANT: the Pages build collapses this include onto a single line, so the
+inline script below deliberately contains no // comments (a line comment
+would otherwise swallow the rest of the script).
 {% endcomment %}
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.esm.min.mjs";
@@ -16,12 +19,11 @@ here is required for screen-reader access — the diagrams are an enhancement.
     flowchart: { htmlLabels: false }
   });
   window.addEventListener("DOMContentLoaded", async () => {
-    // Jekyll renders ```mermaid fences as highlighted code — convert to mermaid targets.
     for (const code of document.querySelectorAll("code.language-mermaid")) {
       const container = document.createElement("div");
       container.className = "mermaid";
       container.textContent = code.textContent;
-      const wrapper = code.closest("pre") ?? code;
+      const wrapper = code.closest("pre") || code;
       wrapper.replaceWith(container);
     }
     const targets = document.querySelectorAll(".mermaid");
@@ -30,7 +32,6 @@ here is required for screen-reader access — the diagrams are an enhancement.
         await mermaid.run({ nodes: targets });
       } catch (e) {
         console.error("Mermaid render failed:", e);
-        // The code-block text remains as fallback content if rendering fails.
       }
     }
   });
