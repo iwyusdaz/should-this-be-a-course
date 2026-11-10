@@ -3,6 +3,18 @@
 All notable changes to this project are documented here.
 Format based on Keep a Changelog; versioning is date-based for a portfolio project.
 
+## [2026-11-11] Evaluation without external AI models
+
+### Added
+- Agent-simulated learner runs (one AI agent, single model, 4 personas × 2 prior-knowledge conditions = 8 runs) with the >75% same-choice rule: no decision point flagged. Raw runs in `evaluation/agent-simulated/simulation-runs.json`; tables in `evaluation/results.md`.
+- Agent-simulated review panel (same agent, 3 reviewer roles, 11-item structured review form): 9 pass, 2 concern, 0 fail, 8 open findings. Record in `evaluation/agent-simulated/review-panel.md`.
+
+### Changed
+- `evaluation/METHODS.md`, README, STATUS, the usability test report and the structured review form now describe what was actually run, by what, and its limits (single model, not blind, no agreement statistic).
+
+### Removed
+- The model-API evaluation pipelines (`evaluation/run-simulations.mjs`, `evaluation/run-review-panel.mjs`, `evaluation/lib/common.mjs`), the environment template, their npm scripts and the `dotenv` dev dependency. The repository no longer needs any external AI model.
+
 ## [1.0.0] — 2026-10-25
 
 ### Added
@@ -16,6 +28,6 @@ Format based on Keep a Changelog; versioning is date-based for a portfolio proje
 - Evaluation infrastructure:
   - Scripted Playwright tests of the scenario (keyboard-only playthrough, 320 px reflow, 400% zoom, focus management, step counts) with committed results.
   - `ariaSnapshot()` capture as the screen-reader-output fallback (Guidepup/VoiceOver automation is not supported on the build machine's macOS version).
-  - Pending API pipelines `evaluation/run-simulations.mjs` (simulated learner runs with a >75% same-choice revision flag) and `evaluation/run-review-panel.mjs` (multi-model structured review), both with `--dry-run` modes; run via `npm run eval:pending`.
+  - Model-API evaluation pipelines `evaluation/run-simulations.mjs` (simulated learner runs with a >75% same-choice revision flag) and `evaluation/run-review-panel.mjs` (multi-model structured review), never run with a real model; removed on 2026-11-11 (see above).
   - Human testing protocol (consent text, test script, findings template, structured review form, manual VoiceOver check) in `evaluation/human-protocol/`.
 - Accessibility verification: axe-core audits and scripted keyboard/reflow tests; results in the README accessibility statement and `docs/06-measure/usability-test-report.md`.

@@ -1,6 +1,6 @@
 # Evaluation methods
 
-This document records **who or what performed each evaluation method, what it can and cannot show, and exactly how the pending methods run.** Read it before quoting any evidence from this repository.
+This document records **who or what performed each evaluation method, what it can and cannot show, and exactly how the agent-simulated methods were run.** Read it before quoting any evidence from this repository.
 
 The one-paragraph status is on the [README](https://github.com/iwyusdaz/should-this-be-a-course#readme); the detailed usability report is at [docs/06-measure/usability-test-report.html](https://iwyusdaz.github.io/should-this-be-a-course/06-measure/usability-test-report.html).
 
@@ -15,108 +15,83 @@ The one-paragraph status is on the [README](https://github.com/iwyusdaz/should-t
 | 3 | `ariaSnapshot()` accessibility-tree captures | Build agent, automated | **Done** — `evaluation/aria-snapshot/aria-snapshot.txt` | What a screen reader would consume from the browser | A real screen-reader user's experience |
 | 4 | VoiceOver testing (manual protocol) | Human (portfolio owner) | **Not performed.** Guidepup automation does not function on the build machine's macOS version; no VoiceOver testing is claimed anywhere | Real AT experience | — |
 | 5 | Reviewer cognitive walkthrough + heuristic evaluation (Nielsen's 10 heuristics), using the structured review form | Reviewer agent (separate agent, fresh context, did not build the repo) | **Done 2026-10-26** — report: `evaluation/agent-review.md` (live-site walkthrough, 3 personas, Nielsen heuristics, structured form; 10 findings returned and addressed) | Usability/clarity gaps | Real users; not "educator review" or "expert feedback" — labeled **Agent review** |
-| 6 | Simulated learner runs (personas × prior knowledge, ≥8 runs) with the >75% same-choice revision rule | API pipeline `evaluation/run-simulations.mjs` (MODEL_A + MODEL_B) | **PENDING: requires API key** (`npm run eval:pending`) | Ambiguous options, obviously-attractive distractors, unrealistic steps | Learning gains, engagement, transfer, statistical significance |
-| 7 | Multi-model AI review panel (3 reviewer roles × ≥2 models, rubric agreement + Cohen's κ) | API pipeline `evaluation/run-review-panel.mjs` | **PENDING: requires API key** (`npm run eval:pending`) | Consistent cross-model findings with agreement reported | Accuracy vs. human judgement; expert endorsement |
+| 6 | Agent-simulated learner runs (4 personas × 2 prior-knowledge conditions = 8 runs) with the >75% same-choice revision rule | One AI agent, single model, in the build environment (no API calls) | **Done 2026-11-11.** No decision point flagged (highest pooled share 62.5%). Results: [results.md](results.md); raw runs: [agent-simulated/simulation-runs.json](agent-simulated/simulation-runs.json) | Ambiguous options, obviously attractive distractors, unrealistic steps, as judged by one model | Learning gains, engagement, transfer, statistical significance, cross-model consistency |
+| 7 | Agent-simulated review panel (3 reviewer roles, 11-item structured review form) | The same single AI agent, playing each role in turn (no API calls) | **Done 2026-11-11.** 9 pass, 2 concern, 0 fail; 8 open findings, not yet fixed. Record: [agent-simulated/review-panel.md](agent-simulated/review-panel.md) | One model's structured findings against the rubric | Agreement between reviewers (none computed), accuracy against human judgement, expert endorsement |
 | 8 | Human usability sessions (n = 3–5, think-aloud; tasks and questions in the protocol) | Human (portfolio owner) | **Not run** — script, consent text, findings template ready in `evaluation/human-protocol/` | Real user experience | — |
 
-**Labeling rule used everywhere in this repo:** every output of methods 5–7 is labeled by its method ("Agent review", "AI-simulated persona P2", "Agent review panel"). No AI output is ever presented as coming from a real person or under a human name, and no pending result is ever fabricated — tables stay marked "PENDING: requires API key" until a real run replaces them.
+**Labeling rule used everywhere in this repo:** every output of methods 5 to 7 is labeled by its method ("Agent review", "Agent-simulated persona P2", "Agent-simulated review panel"). No AI output is ever presented as coming from a real person or under a human name, and no result is invented: methods 6 and 7 report exactly what the agent produced in the files linked above.
 
 ---
 
-## 2. Pending pipeline 1 — simulated learner runs
+## 2. Agent-simulated learner runs (method 6)
 
-### What it does
+### What was run, and by what
 
-`evaluation/run-simulations.mjs` plays the scenario's three decision points to AI personas and records what each would choose, then applies the revision rule from the project plan: **any decision point where more than 75% of simulated personas pick the same option is flagged for revision** (an obviously-attractive option is a design defect in a consequences-based scenario). The flag is computed pooled across models and per model; both views are saved.
+On 2026-11-11 one AI agent (the Kiro workflow agent, a single model) played each persona through the scenario's three decision points inside the build environment. No API key, external model endpoint or local model was used. The agent recorded each choice, a one- or two-sentence in-character reason, and an out-of-character reflection on clarity and realism.
 
-### Persona specifications
+### What changed from the original design, and why it matters
 
-Defined in [`evaluation/personas.json`](personas.json) (4 personas × 2 prior-knowledge conditions = 8 runs per model; MODEL_A and MODEL_B both run the full set → 16 runs minimum):
+The original plan was a blind, cross-model run: at least two different models (MODEL_A and MODEL_B) would each play all 8 runs through an API, seeing only the scene and option text, so model bias could be compared. That design cannot be reproduced without API access, so this run differs in three ways:
+
+1. **One model, not two.** There is no per-model view and no way to separate the persona's behavior from this one model's bias.
+2. **Not blind.** Before playing, the agent had read the full scenario source, including the outcome passages, the debrief that names each option as strong, mistake or avoidant, and the earlier agent review's prediction of which options would be flagged. The choices are the agent's judgment of how each persona would realistically act, not a fresh reaction.
+3. **Same agent as the reviewer.** The same agent also played the review panel (method 7).
+
+Treat the results as one model's design probe, weaker evidence than the planned design.
+
+### Personas and conditions
+
+Defined in [`evaluation/personas.json`](personas.json): 4 personas × 2 prior-knowledge conditions = 8 runs.
 
 | Persona | Profile | Prior knowledge conditions |
 |---|---|---|
-| **P1 — Nile**, newly promoted, conflict-averse | Promoted 4 months ago from senior nurse; 13 direct reports; no management training; finds hard conversations frightening | `none`, `job-aid` |
-| **P2 — Marta**, experienced clinic manager, task-focused | 11 years managing; calls her daily round-ups "feedback"; skeptical of soft-skills talk; measured on throughput | `none`, `job-aid` |
-| **P3 — Devon**, cautious new manager, rule-following | Promoted 6 months ago; reads every policy; worries about saying the wrong thing; defers to policy | `none`, `job-aid` |
-| **P4 — Bao**, pragmatic ops-minded manager | Operations background; impatient; sees one-on-ones as admin unless shown the payoff | `none`, `job-aid` |
+| **P1, Nile**, newly promoted, conflict-averse | Promoted 4 months ago from senior nurse; 13 direct reports; no management training; finds hard conversations frightening | `none`, `job-aid` |
+| **P2, Marta**, experienced clinic manager, task-focused | 11 years managing; calls her daily round-ups "feedback"; skeptical of soft-skills talk; measured on throughput | `none`, `job-aid` |
+| **P3, Devon**, cautious new manager, rule-following | Promoted 6 months ago; reads every policy; worries about saying the wrong thing; defers to policy | `none`, `job-aid` |
+| **P4, Bao**, pragmatic ops-minded manager | Operations background; impatient; sees one-on-ones as admin unless shown the payoff | `none`, `job-aid` |
 
-`job-aid` personas are told they have read the "Feedback in 5 minutes" job aid (its structure is summarized in the prompt). The option labels ("avoidant / common mistake / stronger") are **not** shown to the personas — they are internal design notes, exactly as a real player never sees them.
+In the `job-aid` condition the persona is assumed to have read the "Feedback in 5 minutes" job aid before playing.
 
-### Prompts and settings
+### Revision rule
 
-- **System prompt (per persona/condition):** full persona profile + prior knowledge + the instruction to stay in character, react as the persona realistically would (including flaws), and not optimize for the "best" option.
-- **Per decision:** the scene text and the three option texts (verbatim from `src/scenario.twee`'s design), then: `Respond with ONLY a JSON object: {"choice": "A"|"B"|"C", "reason": "one or two sentences, in character"}`. The full conversation is stateful — the model sees its own earlier choices.
-- **End of run reflection:** `"Finally, step out of character for one reflection… {"clarity": "…was any option confusing, unrealistic, or obviously the right one?", "realism": "…did the situation feel like something that could happen on your unit?"}"`.
-- **JSON repair:** one retry with `temperature 0.2` if a reply is unparseable.
-- **Settings:** `temperature 0.7` (persona diversity), `max_tokens 700` per decision, 400 for the reflection; 2 retries with backoff on transport errors.
-- **Endpoints:** whatever OpenAI-compatible `MODEL_A_*` / `MODEL_B_*` (`MODEL_C_*` optional) are configured in `.env`. Models are recorded by name in every output.
+Per decision point: `flagged = max(A, B, C) / 8 > 0.75` over the pooled runs. A per-condition breakdown is reported for context. A per-model view is not possible with one model.
 
-### Outputs
+### Result
 
-`evaluation/simulation-results/<run_id>/` — `runs.jsonl` (every raw reply), `summary.json` (distributions, flags, settings), `summary.md` (human-readable tables). `evaluation/results.md` is regenerated. **Dry runs write to `dry-run/` instead and never touch committed files.**
-
-### Revision rule implementation
-
-Per decision point: `flagged = max(A,B,C) / total > 0.75` over non-errored runs — pooled and per model. A flagged run prints a prominent note and marks the tables in `results.md` and `summary.md`.
-
-### What the results can and cannot be used for
-
-**Can:** find ambiguous or unrealistic options, obviously-attractive distractors (the >75% rule), confusing steps, and wording problems — per persona and per model. **Cannot:** show learning, engagement, transfer, retention, or anything statistical about real people. Personas share the underlying models' biases; that is why ≥2 models run the full set and both views are reported.
+No decision point was flagged. Highest pooled share: 62.5% (Decision 2, strong option). The tables, the per-condition breakdown and what the runs suggest are in [results.md](results.md).
 
 ---
 
-## 3. Pending pipeline 2 — multi-model review panel
+## 3. Agent-simulated review panel (method 7)
 
-### What it does
+### What was run, and by what
 
-`evaluation/run-review-panel.mjs` assembles a review packet from the actual repository artifacts and has **at least two models** review them in **three roles**:
+On 2026-11-11 the same single agent reviewed the repository artifacts in three roles, one after another, using the 11-item [structured review form](human-protocol/structured-review-form.md) (`pass` / `concern` / `fail`, plus open findings and an overall assessment). Each role read its packet in full and rated only the rubric items its packet covers:
 
-| Role | Focus | Packet artifacts |
-|---|---|---|
-| **R1 — Learning design reviewer** | action mapping, scenario structure, branching quality, feedback design | action map, scenario design, `src/scenario.twee`, 30-day challenge |
-| **R2 — Performance consulting & measurement reviewer** | intake quality, root-cause logic, proposal, cost logic, measurement design | completed intake, BEM, is-it-training, proposal, measurement plan |
-| **R3 — Accessibility & clarity reviewer** | WCAG claims vs. evidence, alt text, diagram summaries, honesty labeling | survey analysis, scenario design, usability report, survey data README |
+| Role | Focus | Packet artifacts | Items rated |
+|---|---|---|---|
+| **R1, Learning design reviewer** | action mapping, scenario structure, branching quality, feedback design | action map, scenario design, `src/scenario.twee`, 30-day challenge | 5, 6, 7, 11 |
+| **R2, Performance consulting and measurement reviewer** | intake quality, root-cause logic, proposal, cost logic, measurement design | completed intake, BEM, is-it-training, proposal, measurement plan | 1, 2, 3, 4, 8 |
+| **R3, Accessibility and clarity reviewer** | WCAG claims vs. evidence, alt text, diagram summaries, honesty labeling | survey analysis, survey data README, scenario design, usability report | 9, 10 |
 
-Each model reviews **each role** (MODEL_A + MODEL_B required → ≥6 reviews), so agreement is computed across models within a role.
+### What changed from the original design
 
-### Rubric and prompts
+The original plan had at least two different models review each role, with per-item agreement and Cohen's κ between models. With one model there is no second rater, so **no agreement statistic is reported**. The panel model may share a model family with the agent that built the artifacts. It did not author the artifacts it reviewed.
 
-- The rubric is the **structured review form** (`evaluation/human-protocol/structured-review-form.md`): 11 fixed items, each rated `pass` / `concern` / `fail`, plus open findings (`severity`, `artifact`, `issue`, `suggestion`) and an overall assessment. The same form is used by the human protocol and the (upcoming) agent review, so results are comparable.
-- **System prompt:** independent reviewer role + focus + the reminder that the case is simulated and the craft/honesty is what's being judged.
-- **Settings:** `temperature 0.2`, `max_tokens 1600`, JSON-only replies with one repair retry; artifacts truncated at 9,000 characters each in the packet.
+### Result
 
-### Agreement reporting
-
-Per rubric item: identical-rating percentage between the two primary models. Overall: % identical across all 11 items and **Cohen's κ** over the 3 rating categories (implemented in `evaluation/lib/common.mjs`). Agreement measures **consistency between models, not accuracy against human judgement**.
+9 pass, 2 concern (item 4, proposal; item 6, scenario options), 0 fail. Eight open findings (3 medium, 5 low) are recorded with suggested changes in [agent-simulated/review-panel.md](agent-simulated/review-panel.md). They were not fixed in this round.
 
 ### Honesty boundaries
 
-- Results are always labeled **Agent review panel** (never "educator review", "expert feedback", or "peer review").
-- The panel models did not author the artifacts (the build agent did), but they may share a model family with it — the same-model limitation is disclosed here and in every results table.
-- A model never judges its own output: no panel model authored any reviewed artifact.
-
-### Outputs
-
-`evaluation/panel-results/<run_id>/` — `reviews.jsonl` (raw reviews), `summary.json` (ratings, agreement, κ), `summary.md` (tables). `evaluation/results.md` regenerated.
+- Results are always labeled **agent-simulated review panel**, never "educator review", "expert feedback" or "peer review".
+- The ratings are one model's opinions. Human review outranks them.
 
 ---
 
-## 4. How to run the pending evaluations
+## 4. Reproducing or extending the agent-simulated runs
 
-```bash
-# 1. Configure (once). Copy .env.example to .env and fill in at least MODEL_A_* and MODEL_B_*.
-cp .env.example .env
-
-# 2. Verify the wiring with no keys (writes stub outputs to dry-run/):
-npm run eval:dry-run
-
-# 3. Real run (simulated learner runs + review panel):
-npm run eval:pending
-```
-
-- Missing or `YOUR_`-placeholder values make both pipelines exit with code 1 and a clear message **before any network call**. `eval:dry-run` needs no keys at all.
-- After a real run: regenerate/commit the run folders, check `evaluation/results.md`, then update the evaluation-status line in `README.md`, section 1 of this file, `docs/06-measure/usability-test-report.md`, and `STATUS.md`.
-- `dry-run/` output is stubbed wiring-proof only — never cite it as evidence, and never commit it.
+No API keys or environment files are needed, and nothing in this repository calls an external model. To repeat the runs, an agent (or a person) plays each persona in `personas.json` through the published scenario, records choices and reasons in the same JSON shape as [agent-simulated/simulation-runs.json](agent-simulated/simulation-runs.json), and completes the structured review form once per role. Label any new run with who performed it, the date and whether it was blind.
 
 ## 5. How human testing would be added
 
@@ -136,6 +111,6 @@ After human sessions: add a "Human usability sessions" row to the status table i
 
 1. **No learning claims.** Neither the personas nor any other method in this repo can demonstrate that anyone learned anything.
 2. **No statistical significance.** Run counts are design-probing samples, not studies.
-3. **Same-model limitation.** The reviewer agent and the panel models may share a model family with the build agent; disclosed wherever results appear.
+3. **Same-model limitation.** Methods 6 and 7 were performed by one agent using one model, which may share a model family with the build agent and the method 5 reviewer. Disclosed wherever results appear.
 4. **Simulated case.** Every artifact under review describes a fictional organization; the reviews assess craft and honesty of the artifacts, not a real intervention.
-5. **Pending means pending.** Until the API keys exist and the pipelines run, all results tables stay "PENDING: requires API key" — nothing is pre-filled.
+5. **Agent-simulated means agent-simulated.** The persona runs and panel ratings are an AI agent's role-play, not real learners or reviewers, and the cross-model blind design originally planned was not run.

@@ -3,7 +3,7 @@
 One form, three uses — so the results are comparable across reviewers:
 
 1. **Agent review** — a reviewer agent (fresh context, did not build the repo) completes this form. Labeled "Agent review" wherever it appears; never "educator review", "expert feedback", or "peer review".
-2. **Multi-model AI review panel** (pending) — `evaluation/run-review-panel.mjs` sends the same rubric to ≥2 models in 3 reviewer roles and reports agreement + Cohen's κ.
+2. **Agent-simulated review panel** (done 2026-11-11): one AI agent, single model, completed the form in 3 reviewer roles. No agreement statistic is computed with a single model. Record: `evaluation/agent-simulated/review-panel.md`.
 3. **Human review** — an experienced practitioner may complete the same form (with permission, their role is stated but the review is still one person's opinion).
 
 **Reviewer instructions.** You are reviewing a portfolio case study built on **simulated data** (fictional organization, constructed for portfolio purposes). Judge the craft and the honesty of the artifacts — not whether the organization is real. For each item give a rating and one or two sentences of justification:

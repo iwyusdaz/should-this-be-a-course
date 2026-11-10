@@ -14,7 +14,7 @@
  *
  * What this CAN show: the flows work, keyboard works, focus works, no reflow failures.
  * What it CANNOT show: real learner experience, comprehension, realism (that is what the
- * pending reviewer walkthrough, simulated-learner pipeline and human protocol are for).
+ * agent review, agent-simulated learner runs and human protocol are for).
  *
  * All navigation is done through the same links a player uses (no internal SugarCube
  * APIs for state changes), so the tests exercise what a real user experiences.

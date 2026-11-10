@@ -54,7 +54,7 @@ Equally important: [what we won't build](04-solution/what-we-wont-build.html) �
 
 ## Measurement, and the honesty section
 
-The [baseline dashboard](06-measure/baseline-dashboard.html) shows where Brightline starts (31% cadence, 2.4/5 pulse, 22% turnover). The [usability test report](06-measure/usability-test-report.html) documents what was actually tested — automated scripted tests and audits — what is pending (reviewer walkthrough, AI-simulated learner runs, multi-model review panel — see [evaluation/METHODS.md](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/METHODS.md)), and what no evidence here can show: real learner experience and learning gains.
+The [baseline dashboard](06-measure/baseline-dashboard.html) shows where Brightline starts (31% cadence, 2.4/5 pulse, 22% turnover). The [usability test report](06-measure/usability-test-report.html) documents what was actually tested: automated scripted tests and audits, a fresh-context agent review, and an agent-simulated learner run and review panel performed by one AI model (see [evaluation/METHODS.md](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/METHODS.md)). It also states what no evidence here can show: real learner experience and learning gains.
 
 Every dataset, interview and document in this case study is simulated and labeled as such. That's not a disclaimer to scroll past — it's the scope of the claim.
 

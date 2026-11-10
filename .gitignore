@@ -1,4 +1,4 @@
-# Secrets — never commit. See .env.example for the expected shape.
+# Local environment files: never commit (the repo needs none)
 .env
 
 # Dependencies (resolved from the workspace root in this build environment)
@@ -7,8 +7,6 @@ node_modules/
 # OS noise
 .DS_Store
 
-# Dry-run outputs from evaluation pipelines (stub data, never real results)
-dry-run/
 
 # Local axe audit output
 axe-results/

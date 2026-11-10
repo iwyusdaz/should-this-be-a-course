@@ -6,7 +6,7 @@ nav_order: 3
 
 # Usability test report — the branching scenario and job aid
 
-> **Read the labels.** The testing performed so far is **automated and agent-based**: scripted Playwright checks and axe-core audits run by the build agent, plus a **fresh-context agent design review** (completed 2026-10-26, [`evaluation/agent-review.md`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md)). No humans have tested this scenario. The AI-simulated learner runs and review panel are still pending, and a human usability protocol is ready in `evaluation/human-protocol/`. Nothing below is a claim about real learner experience.
+> **Read the labels.** The testing performed so far is **automated and agent-based**: scripted Playwright checks and axe-core audits run by the build agent, plus a **fresh-context agent design review** (completed 2026-10-26, [`evaluation/agent-review.md`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md)). No humans have tested this scenario. An agent-simulated learner run and review panel (one AI agent, single model, 2026-11-11) have also been completed, and a human usability protocol is ready in `evaluation/human-protocol/`. Nothing below is a claim about real learner experience.
 
 ## What was tested, and by what
 
@@ -16,12 +16,12 @@ nav_order: 3
 | ariaSnapshot captures (accessibility-tree output) | Build agent, automated | **Done** (committed in `evaluation/aria-snapshot/`) | What a screen reader would consume — *not* a substitute for a real screen reader user |
 | axe-core audit (WCAG 2.1 A/AA + best practice) | Build agent, automated | **Done — 0 violations** on scenario and job aid | Standards conformance of the rendered DOM |
 | Cognitive walkthrough + heuristic evaluation (Nielsen) of the scenario and the case-study pages | Reviewer agent (fresh context, not the build agent) | **Done 2026-10-26** — report: [`evaluation/agent-review.md`](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-review.md); 10 findings, all addressed | Usability and clarity gaps; not real-user evidence |
-| Simulated learner runs (personas × prior knowledge, ≥8 runs) | API pipeline `evaluation/run-simulations.mjs` | **Pending: requires API key** | Ambiguous options, obvious distractors, unrealistic steps; not learning gains |
-| Multi-model review panel | API pipeline `evaluation/run-review-panel.mjs` | **Pending: requires API key** | Findings with model agreement; not expert endorsement |
+| Agent-simulated learner runs (4 personas × 2 prior-knowledge conditions, 8 runs) | One AI agent, single model, no API calls | **Done 2026-11-11**: no decision point over the 75% same-choice flag ([results](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/results.md)) | Ambiguous options, obvious distractors, unrealistic steps, as judged by one model; not learning gains |
+| Agent-simulated review panel (3 roles, 11-item form) | The same single AI agent | **Done 2026-11-11**: 9 pass, 2 concern, 0 fail; 8 open findings, not yet fixed ([record](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/agent-simulated/review-panel.md)) | One model's structured findings; no inter-model agreement, not expert endorsement |
 | Human usability sessions (n = 3–5, think-aloud, per the plan) | Portfolio owner | **Not run** — script, consent text and findings template ready in `evaluation/human-protocol/` | Real user experience |
 | VoiceOver (manual check protocol) | Portfolio owner | **Not performed** — Guidepup automation is not functional on the build machine's macOS version; the manual protocol is provided | Real assistive-technology experience |
 
-Full methods, prompts and settings for the pending evaluations: [evaluation/METHODS.md](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/METHODS.md).
+Full methods and limits of every evaluation, including the agent-simulated runs: [evaluation/METHODS.md](https://github.com/iwyusdaz/should-this-be-a-course/blob/main/evaluation/METHODS.md).
 
 ## Scripted test results (2026-10-26)
 
@@ -71,5 +71,5 @@ Review findings noted but **not** fixed (recorded in `DECISIONS.md`): no overall
 ## What this evidence cannot show (and what would)
 
 - **Not real users:** the scripted tests prove the *machinery* works. Whether the situation feels real, whether any option is obviously right, and what a manager would actually learn are questions for humans — the human protocol exists for exactly that and has not been run.
-- **No learning claims:** nothing here shows anyone learned anything. At most, future simulated runs can surface *clarity* problems (see METHODS for the can/can't list).
-- **One author's lens:** everything was built and machine-tested by the same agent. The fresh-context reviewer walkthrough has now run (2026-10-26 — see `evaluation/agent-review.md` and the revisions section above), but it is still agent evidence, not human evidence: the multi-model review panel, simulated learner runs and human sessions remain outstanding.
+- **No learning claims:** nothing here shows anyone learned anything. At most, the agent-simulated runs surface *clarity* problems (see METHODS for the can/can't list).
+- **One author's lens:** everything was built and machine-tested by the same agent. The fresh-context reviewer walkthrough has now run (2026-10-26; see `evaluation/agent-review.md` and the revisions section above), but it is still agent evidence, not human evidence. The agent-simulated runs and review panel (2026-11-11) were all performed by one model, so they add no second perspective. Human sessions remain outstanding.

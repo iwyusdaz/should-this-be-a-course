@@ -1,5 +1,5 @@
 {
-  "note": "Persona specifications for evaluation/run-simulations.mjs. SIMULATED PERSONAS for portfolio evaluation — AI plays these roles; they are not real people. 'Prior' sets what the persona has already seen before playing the scenario (none = just the story; job-aid = has read the Feedback in 5 minutes job aid).",
+  "note": "Persona specifications for the agent-simulated learner run (see evaluation/METHODS.md and evaluation/agent-simulated/). SIMULATED PERSONAS for portfolio evaluation: an AI agent plays these roles; they are not real people. 'Prior' sets what the persona has already seen before playing the scenario (none = just the story; job-aid = has read the Feedback in 5 minutes job aid).",
   "personas": [
     {
       "id": "P1",

@@ -1,0 +1,91 @@
+{
+  "label": "AGENT-SIMULATED PERSONA RUNS. One AI agent played every persona. These are not real learners, not human results, and not the cross-model blind design originally planned.",
+  "date": "2026-11-11",
+  "performed_by": "One AI agent (Kiro workflow agent, single model) inside the build environment. No API calls, no second model, no human.",
+  "method": "evaluation/METHODS.md section 2",
+  "scenario_source": "src/scenario.twee at commit 6101ae0 (option order as published: D1 A=strong, B=avoidant, C=mistake; D2 A=avoidant, B=strong, C=mistake; D3 A=avoidant, B=mistake, C=strong)",
+  "known_bias": "The agent read the full scenario source (including outcome passages, the debrief that names strong/mistake/avoidant, and the earlier agent review's flag prediction) before playing. Choices are its judgment of how each persona would realistically act, not a blind reaction.",
+  "scoring": "strong +1, mistake 0, avoidant -1; score >= 3 Improved, 0 to 2 Unresolved, < 0 Escalated (same logic as the scenario)",
+  "runs": [
+    {
+      "persona": "P1", "prior": "none",
+      "decisions": [
+        { "point": 1, "choice": "B", "kind": "avoidant", "reason": "I'm not ready to make this a thing in front of Marcus. I'll check how she is first and see if she brings it up." },
+        { "point": 2, "choice": "A", "kind": "avoidant", "reason": "She has been here nine years and she's upset. I've already made her feel attacked; I'd rather drop it than lose her." },
+        { "point": 3, "choice": "B", "kind": "mistake", "reason": "She's exhausted and proud of the flu cover. I want her to leave feeling good, so I'd wrap the handover point in praise." }
+      ],
+      "reflection": { "clarity": "None of the options felt obviously right in the moment. In Decision 2 the long option sounded like what a confident manager says, which is exactly what I don't feel like.", "realism": "Very real. Being promoted over former peers and avoiding the conversation is what I'd do." },
+      "score": -2, "ending": "End_Escalated"
+    },
+    {
+      "persona": "P1", "prior": "job-aid",
+      "decisions": [
+        { "point": 1, "choice": "A", "kind": "strong", "reason": "The job aid says name the specific moment and ask 'What's your take?'. That line is basically on my sheet, so I'd use it even though I'm nervous." },
+        { "point": 2, "choice": "B", "kind": "strong", "reason": "This is almost word for word the 'if they get defensive' line on the job aid. Without it I'd have backed off." },
+        { "point": 3, "choice": "B", "kind": "mistake", "reason": "I'd still soften it. She covered two extra shifts; leading with the handover point feels unkind this week." }
+      ],
+      "reflection": { "clarity": "Decisions 1 and 2 felt easy only because the job aid gives me those exact sentences. Decision 3 was genuinely hard.", "realism": "Realistic. The tired, proud colleague in Decision 3 is the situation where I'd slip." },
+      "score": 2, "ending": "End_Unresolved"
+    },
+    {
+      "persona": "P2", "prior": "none",
+      "decisions": [
+        { "point": 1, "choice": "C", "kind": "mistake", "reason": "There have been complaints, so I'd say so plainly and set the expectation. That is being direct, not unkind." },
+        { "point": 2, "choice": "C", "kind": "mistake", "reason": "Completeness is non-negotiable on a clinical unit. I'd acknowledge her and restate the requirement; I'm not going to bargain over safety." },
+        { "point": 3, "choice": "A", "kind": "avoidant", "reason": "She gets feedback from me every day at the round-up. With the flu wave, a sit-down meeting can wait a month." }
+      ],
+      "reflection": { "clarity": "The 'acknowledge, then hold' option in Decision 2 is longer and reads like training-course language; a practical manager would see it as the expected answer.", "realism": "Realistic. The clinic runs on throughput and the one-on-one is the first thing I'd drop." },
+      "score": -1, "ending": "End_Escalated"
+    },
+    {
+      "persona": "P2", "prior": "job-aid",
+      "decisions": [
+        { "point": 1, "choice": "A", "kind": "strong", "reason": "The job aid's opener is specific and factual, which suits me. It's quicker than a lecture." },
+        { "point": 2, "choice": "B", "kind": "strong", "reason": "The job aid line keeps the safety requirement and fixes the system issue, which is practical. I'd use it." },
+        { "point": 3, "choice": "C", "kind": "strong", "reason": "The template on screen asks for one piece of feedback and the next booking. Two minutes, then done." }
+      ],
+      "reflection": { "clarity": "Decision 3's strong option repeats the template prompts printed in the scene, so with the template in front of me it was the obvious pick.", "realism": "Fine, though a busy manager would still be tempted to cancel." },
+      "score": 3, "ending": "End_Improved"
+    },
+    {
+      "persona": "P3", "prior": "none",
+      "decisions": [
+        { "point": 1, "choice": "C", "kind": "mistake", "reason": "There are documented complaints. Referring to them keeps it factual and on the record; I don't want to make it personal." },
+        { "point": 2, "choice": "C", "kind": "mistake", "reason": "When she pushes back I'd fall back on the requirement. It's policy and patient safety; I can't be wrong quoting that." },
+        { "point": 3, "choice": "C", "kind": "strong", "reason": "The template says one piece of specific feedback and book the next one. I'd follow the template exactly." }
+      ],
+      "reflection": { "clarity": "Decision 1 was hard: the complaint option felt safest because it isn't my opinion. Decision 3 felt like following instructions.", "realism": "Realistic; new managers do hide behind policy." },
+      "score": 1, "ending": "End_Unresolved"
+    },
+    {
+      "persona": "P3", "prior": "job-aid",
+      "decisions": [
+        { "point": 1, "choice": "A", "kind": "strong", "reason": "The job aid tells me to name the situation and ask for her view. I'd follow it." },
+        { "point": 2, "choice": "B", "kind": "strong", "reason": "This is the job aid's first defensive-recovery move. I'd follow it." },
+        { "point": 3, "choice": "C", "kind": "strong", "reason": "It matches the job aid's 'before they leave the room' list and the template." }
+      ],
+      "reflection": { "clarity": "With the job aid every decision mapped to a printed step, so there was little to decide.", "realism": "Realistic setting; in this condition the choices felt like a checklist test." },
+      "score": 3, "ending": "End_Improved"
+    },
+    {
+      "persona": "P4", "prior": "none",
+      "decisions": [
+        { "point": 1, "choice": "C", "kind": "mistake", "reason": "Fastest route: tell her there's a problem and it needs fixing today. I don't have time for a long chat at handover." },
+        { "point": 2, "choice": "B", "kind": "strong", "reason": "If the new system broke the sheets, fix the system. That's the practical move, and the requirement still stands." },
+        { "point": 3, "choice": "A", "kind": "avoidant", "reason": "She's exhausted, nothing is on fire, and the meeting is admin. Push it a month." }
+      ],
+      "reflection": { "clarity": "Decision 3's cancel option sounded reasonable; nothing in the scene showed me the payoff of keeping the meeting.", "realism": "Realistic. Ops people triage meetings exactly like this." },
+      "score": 0, "ending": "End_Unresolved"
+    },
+    {
+      "persona": "P4", "prior": "job-aid",
+      "decisions": [
+        { "point": 1, "choice": "A", "kind": "strong", "reason": "The job aid's opener is short and gets the facts out. Efficient." },
+        { "point": 2, "choice": "B", "kind": "strong", "reason": "It matches the job aid and it fixes the root cause." },
+        { "point": 3, "choice": "C", "kind": "strong", "reason": "Ninety seconds of feedback and a booking is cheaper than another month of callbacks." }
+      ],
+      "reflection": { "clarity": "The job aid made Decisions 1 and 2 recognizable; Decision 3 hinged on whether I believed the meeting pays off.", "realism": "Realistic." },
+      "score": 3, "ending": "End_Improved"
+    }
+  ]
+}

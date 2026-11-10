@@ -1,5 +1,7 @@
 # Agent review — should-this-be-a-course
 
+> **Historical record (2026-10-26), kept as written.** Its references to pending pipelines that required API keys are out of date: on 2026-11-11 those pipelines were removed and replaced by an agent-simulated run. See [results.md](results.md) and [METHODS.md](METHODS.md).
+
 **Reviewer:** separate AI reviewer agent (fresh context), 2026-10-26. Limitation: the reviewer may share the same underlying model as the author. This is not human or educator review.
 
 **Method label (per `evaluation/METHODS.md` method 5):** Agent review — cognitive walkthrough + heuristic evaluation (Nielsen's 10) + structured review form, performed against the **live site** (https://iwyusdaz.github.io/should-this-be-a-course/) and the repository at commit state 2026-10-26. The reviewer did not build the repo.

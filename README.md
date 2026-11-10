@@ -8,7 +8,7 @@ One-sentence summary: a stakeholder asks for "feedback training for managers"; t
 
 > **Simulated case, constructed for portfolio purposes.** Brightline Health Services and everyone in it are fictional; all interviews, survey data and documents were built to demonstrate the process. AI-assisted authorship is disclosed below.
 
-**Evaluation status:** Automated accessibility testing is complete, and a fresh-context agent design review (cognitive walkthrough + heuristic evaluation, 2026-10-26) is complete — its 10 findings are addressed. AI-simulated learner and review-panel evaluations are pending. No real learners have tested this yet. See evaluation/METHODS.md.
+**Evaluation status:** Automated accessibility testing is complete, and a fresh-context agent design review (cognitive walkthrough + heuristic evaluation, 2026-10-26) is complete, with its 10 findings addressed. An agent-simulated learner run and review panel (one AI agent, single model, 2026-11-11) are complete: no scenario decision point was flagged, and 8 open findings are recorded. No real learners have tested this yet. See [evaluation/METHODS.md](evaluation/METHODS.md).
 
 ## The problem
 
@@ -53,10 +53,11 @@ Each decision, the alternative, and the evidence behind it (full list in [DECISI
 - `ariaSnapshot()` accessibility-tree captures committed as screen-reader-output evidence (Guidepup/VoiceOver automation is not functional on this machine's macOS version — **no VoiceOver testing is claimed**; a manual protocol is provided).
 - A **fresh-context agent design review** of the live site — cognitive walkthrough (3 personas), heuristic evaluation (Nielsen's 10) and a structured review form — returned 10 findings; all were addressed and re-verified ([report](evaluation/agent-review.md), including the reviewer's own live playthroughs of all three endings, keyboard/focus checks and axe re-runs).
 
-**What is pending (pipelines built, keys required):**
+**What was simulated (agent-run, single model, 2026-11-11):**
 
-- AI-simulated learner runs (4 personas × 2 prior-knowledge levels × ≥2 models) with a **>75% same-choice revision flag** — `npm run eval:pending` ([method](evaluation/METHODS.md)).
-- Multi-model agent review panel (3 reviewer roles, rubric agreement + Cohen's κ) — same command.
+- **Agent-simulated learner runs:** one AI agent played 4 personas × 2 prior-knowledge levels (8 runs) through the scenario. Under the **>75% same-choice revision rule**, no decision point was flagged (highest pooled share 62.5%), and all three endings were reached. With the job aid, Decisions 1 and 2 went 4 of 4 to the strong option, because the job aid prints those lines almost word for word ([results](evaluation/results.md)).
+- **Agent-simulated review panel:** the same agent rated the 11-item structured review form in 3 reviewer roles: 9 pass, 2 concern (proposal cost consistency; residual tells in scenario Decisions 2 and 3), 0 fail. 8 open findings are recorded, not yet fixed ([record](evaluation/agent-simulated/review-panel.md)).
+- **Limits:** one model played every persona and reviewer, and it had read the full scenario, including the debrief, before playing. The originally planned blind run across two or more models, with agreement statistics, could not be reproduced, so no agreement is reported. These are not human or real-learner results ([method](evaluation/METHODS.md)).
 
 **What this evidence can and cannot show.** It *can* show: analysis rigor (every cause traces to cited simulated evidence), that the scenario's flows, keyboard support, focus behavior and reflow actually work, and that the accessibility claims match machine-checked evidence. It *cannot* show: real learner experience, learning gains, behavior change, or turnover impact — the data is simulated and nothing was deployed. No real learners have tested this. Every AI-simulated or agent-produced output is labeled by method, never presented as human.
 
@@ -77,21 +78,21 @@ Designed against WCAG 2.1 AA and tested, not assumed:
 
 This project was built with AI assistance, and the split is disclosed so the work can be judged honestly:
 
-- **Built by an AI coding agent** (analysis artifacts, scenario, site, tests, pipelines), working from a design brief and locked case facts. All simulated "evidence" (interviews, survey data, documents) was **constructed by that agent for portfolio purposes** and is labeled as such — nothing describes a real organization.
+- **Built by an AI coding agent** (analysis artifacts, scenario, site, tests), working from a design brief and locked case facts. All simulated "evidence" (interviews, survey data, documents) was **constructed by that agent for portfolio purposes** and is labeled as such; nothing describes a real organization.
 - **Reviewed by automation** (scripted tests, axe audits, seeded-data verification) as described above; four revisions were made because of those checks. **Also reviewed by a separate AI reviewer agent** (fresh context, did not build the repo; may share a model family with the builder — disclosed in the report): its 10 findings and the resulting revisions are in [evaluation/agent-review.md](evaluation/agent-review.md).
-- **What remains human:** the design judgment encoded in the brief, the decision to publish, and — pending — the reviewer walkthrough and human usability sessions. Agent/AI evaluation is labeled by method everywhere and never presented as human or expert feedback.
-- **Reproducibility:** the survey CSV regenerates byte-identically from its seed (`node scripts/generate-survey.mjs --verify`); scenario builds are scripted; every pipeline supports `--dry-run`.
+- **What remains human:** the design judgment encoded in the brief, the decision to publish, and the human usability sessions, which have not been run yet. Agent/AI evaluation is labeled by method everywhere and never presented as human or expert feedback.
+- **Reproducibility:** the survey CSV regenerates byte-identically from its seed (`node scripts/generate-survey.mjs --verify`); scenario builds are scripted; the agent-simulated runs are recorded in full in `evaluation/agent-simulated/`. Nothing in the repo needs an external AI model.
 
 ## What I'd do differently / next steps
 
 - **Ship a playable-but-smaller scenario sooner.** Getting the focus/keyboard behavior right took several test-fix cycles; earlier scripted testing would have caught the SugarCube quirks (no `:passagedisplay` on first display, quote parsing) before the CSS work.
 - **Add a calendar-audit artifact.** Discovery asserts that one-on-ones aren't scheduled; a simulated calendar extract would make that cause even harder to argue with.
-- **Run the pending evaluations** (simulated learner runs, multi-model review panel) and the human protocol with 3–5 real participants.
+- **Act on the agent-simulated panel's open findings** (cost-logic consistency, scenario Decisions 2 and 3) and run the human protocol with 3 to 5 real participants.
 - **Extend the scenario** with a second character thread (Marcus) once the core loop is validated.
 
 ## Tools used
 
-Twego 2.1.1 + SugarCube 2.37.3 (scenario), Just the Docs v0.12.0 (site), Mermaid 11 (diagrams), Playwright 1.57.0 (scripted tests, screenshots, tagged PDF), axe-core 4.11.1 (audits), Lighthouse 13 (spot checks), Node.js (data generation + pipelines), GitHub Pages (hosting), gitleaks (secret scanning).
+Twego 2.1.1 + SugarCube 2.37.3 (scenario), Just the Docs v0.12.0 (site), Mermaid 11 (diagrams), Playwright 1.57.0 (scripted tests, screenshots, tagged PDF), axe-core 4.11.1 (audits), Lighthouse 13 (spot checks), Node.js (data generation and checks), GitHub Pages (hosting), gitleaks (secret scanning).
 
 ## License and attribution
 
